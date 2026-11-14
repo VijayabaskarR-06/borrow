@@ -5,6 +5,7 @@
 - TypeScript checks.
 - 17 automated security/account tests.
 - Next.js 16.4.6 production build.
+- Docker production image builds successfully; the complete HTTP smoke test also passes inside the container running as non-root UID 1001. Test container removed after verification.
 - HTTP smoke test against the standalone production server: 9 pages, isolated guest entry, explicit approval, scoped execution, actual payroll denial, report generation, receipt verification/tampering, revocation and persisted history.
 - Official npm production-dependency audit: zero known advisories at the time of this run (`npm audit --omit=dev --registry=https://registry.npmjs.org`). Optional legacy Sites build tooling still has development-dependency advisories; this does not certify the application as vulnerability-free.
 - Public repository and GitHub CI: https://github.com/VijayabaskarR-06/borrow/actions/runs/43635366847
