@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.next/
+.wrangler/
+.data/
+.env*
+!.env.example
+.dev.vars
+*.tsbuildinfo
+.openai/*.local.*
+.DS_Store
+.borrow-data/
+.sites-runtime/
