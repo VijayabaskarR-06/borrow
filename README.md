@@ -32,7 +32,7 @@ Set `BORROW_ALLOW_LOCAL_DEMO=false` to require the new account/guest sign-in end
 
 ## The interactive story
 
-The landing page has a live 3D hero and three scroll-driven chapters: authorize, contain and verify. It uses native smooth scrolling, keyboard chapter controls, reduced-motion support, and pauses off-screen WebGL scenes. The marketing states are illustrative; the workspace core is driven by actual backend events.
+The landing page uses a graphite, white and electric-blue identity, a reflective chrome sculpture, and three scroll-driven chapters: authorize, contain and verify. It uses native smooth scrolling, keyboard chapter controls, reduced-motion support, and pauses off-screen WebGL scenes. The marketing states are illustrative; the workspace core is driven by actual backend events.
 
 ## Three-minute walkthrough
 

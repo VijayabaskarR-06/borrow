@@ -12,7 +12,7 @@
 
 ## Outstanding evidence
 
-- Final visual browser QA of the latest scrollytelling states: native Chrome automation timed out while browser focus changed. HTTP and component compilation do not substitute for a visual/mobile review.
+- Latest monochrome/chrome desktop hero reviewed visually in Chrome. Final chapter-transition and mobile visual QA remain pending because native browser automation lost window access. HTTP and component compilation do not substitute for those checks.
 - Vultr Compute provisioning and tests on that instance: deferred by the owner.
 - Public deployment URL with the new independent email/guest sign-in.
 - Screenshots and final video of the app actually running on Vultr.
