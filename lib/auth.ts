@@ -46,8 +46,8 @@ export async function authenticate(request: Request, env: Record<string, unknown
     cookie: `borrow_session=${payload}.${await signature(payload, secret)}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${SESSION_SECONDS}${url.protocol === 'https:' ? '; Secure' : ''}`,
   };
 }
-export function validateOrigin(request: Request) {
+export function validateOrigin(request: Request, expectedOrigin = new URL(request.url).origin) {
   if (request.method === 'GET') return true;
   const origin = request.headers.get('origin');
-  return request.headers.get('sec-fetch-site') !== 'cross-site' && (!origin || origin === new URL(request.url).origin);
+  return request.headers.get('sec-fetch-site') !== 'cross-site' && (!origin || origin === expectedOrigin);
 }

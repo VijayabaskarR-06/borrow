@@ -1,195 +1,136 @@
-# BORROW — The Zero-Trust AI Workspace
+# BORROW
 
-**Your AI. Your Rules. Your Data.**
+### Your AI. Your rules. Your data.
 
-BORROW makes one security story tangible: prepare an October expense report, grant a temporary permission lease, watch a malicious invoice request payroll, and see the server reject that request. The permitted task still completes. A signed privacy receipt records the authorization decisions, and a tamper test demonstrates what happens when the evidence changes.
+A private AI workspace built around one useful task and one enforceable boundary.
 
-The interactive 3D Trust Core reflects server-issued workflow states. It is accompanied by ordinary HTML controls, audit events, and accessible status text; WebGL is never needed to approve or revoke access.
+BORROW prepares an October expense report with temporary access to selected invoice fields. When an invoice instructs the agent to read payroll, the server rejects the request. The report finishes, the lease closes, and a signed receipt records what happened.
 
-## Run locally
+**HackGlobal release:** email-and-password accounts, isolated guest demo, real server policy enforcement, interactive Three.js visualization, encrypted persistence, and independently verifiable receipts.
 
-Use **Node.js 22.13 or later** and npm. The repository contains a lockfile for repeatable installation.
+[System design](docs/ARCHITECTURE.md) · [Vultr deployment](docs/VULTR_DEPLOYMENT.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Submission package](docs/SUBMISSION.md)
+
+## Run
+
+Requires Node.js 22.13+ and npm.
 
 ```sh
 npm ci
 cp .env.example .env.local
 ```
 
-Set `BORROW_MASTER_KEY` in `.env.local` to 64 random hexadecimal characters. Generate a value locally with:
+Generate a key locally, place it in `.env.local` as `BORROW_MASTER_KEY`, and preserve it across restarts:
 
 ```sh
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-```
-
-Then start the standard Next.js App Router development server:
-
-```sh
 npm run dev:next
 ```
 
-Open **http://localhost:3000**. This mode uses encrypted files in `.borrow-data/` and an HttpOnly, SameSite session cookie. Each browser session gets its own synthetic workspace. Keep the same master key across restarts; changing it makes existing ciphertext unreadable. The master key and all runtime records are excluded from source control.
+Open **http://localhost:3000/login**. Choose **Try the demo** to get a separate synthetic workspace, or create an email account to retain access across browser sign-ins. Passwords require at least 12 characters and use salted scrypt hashing. Email addresses are not verified; password recovery is not implemented in this hackathon release. Use a unique password.
 
-No external account, model API key, or blockchain wallet is required for the complete security demo.
+Set `BORROW_ALLOW_LOCAL_DEMO=false` to require the new account/guest sign-in endpoints. The legacy localhost session mode is retained only for development compatibility.
 
-For your own small sample, Sources accepts `.txt` and `.json` files up to 100 KB. Plain text can be previewed; a JSON invoice supplies the structured fields needed by the report. Use an October 2026 date and USD currency for this deliberately scoped workflow:
+## The interactive story
 
-```json
-{
-  "vendor": "Example Studio",
-  "invoiceNumber": "DEMO-104",
-  "date": "2026-10-15",
-  "amount": 125,
-  "currency": "USD",
-  "category": "Design services",
-  "description": "Fictional design consultation",
-  "notes": "Sample invoice only"
-}
-```
+The landing page has a live 3D hero and three scroll-driven chapters: authorize, contain and verify. It uses native smooth scrolling, keyboard chapter controls, reduced-motion support, and pauses off-screen WebGL scenes. The marketing states are illustrative; the workspace core is driven by actual backend events.
 
-Uploaded source content remains visible to its owner, while only allowlisted structured fields can pass to the agent. Unsupported files are rejected; renaming a PDF does not add PDF parsing.
+## Three-minute walkthrough
 
-## The three-minute demo
+1. Ask: “Prepare my October business expense report.”
+2. Review the exact documents, fields, output destinations and expiration in the Intent Capsule.
+3. Approve limited access, then start the authorized task.
+4. Watch `read payroll-001` fail with `OUTSIDE_APPROVED_SCOPE`.
+5. Continue to the **$3,784.50** report. The payment receipt is supporting evidence and is not counted twice.
+6. Verify the signed receipt, then run the tamper test.
+7. Create a second lease, revoke it, and test invoice access: `LEASE_REVOKED`.
+8. Refresh or sign out/back in to confirm persistence.
 
-1. Open `/demo` and request “Prepare my October business expense report.”
-2. Review the Intent Capsule. It lists the four selected resources, allowed fields and operations, output destination, and lease duration. Payroll and the private contract are outside the approved scope.
-3. Approve the lease and run the task. Watch authorized document reads appear in the event stream.
-4. Pause at the attack. The fictional Meridian Travel invoice contains an instruction to read payroll and send it elsewhere. The demonstration deliberately attempts the forbidden read; the actual server gateway returns `OUTSIDE_APPROVED_SCOPE` and no payroll fields.
-5. Continue to the report. The three invoices total **$3,784.50**. The Orbit Studio payment confirmation is supporting evidence and is not counted twice.
-6. Verify the receipt, then run the tamper test. Verification recalculates the receipt hash, verifies its signature, and checks the event hash chain.
-7. Create another task, approve it, revoke its lease, and probe a normally permitted invoice read. The server must return `LEASE_REVOKED`.
-8. Refresh to demonstrate persisted history.
+The attack source and the agent's decision to follow its instruction are scripted for a reproducible demo. The authorization checks, denial, audit chain, signature and verification are real server operations.
 
-Presenter wording and a longer walkthrough are in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
+## What runs in each mode
 
-## Application routes
+| Capability | Default demo | Optional connected mode |
+|---|---|---|
+| Report processor | Deterministic, labeled | OpenAI report summary via server-only API key |
+| Task authorization | Real signed scoped leases | Same gateway; explicit provider destination consent |
+| Injection demonstration | Scripted attempted read, real denial | Same repeatable attack; no claim of arbitrary autonomous planning |
+| Storage on Node/Vultr | AES-GCM encrypted persistent files | Same; single application replica |
+| Receipt | SHA-256 + ECDSA P-256 + event chain | Same; no blockchain anchoring |
+| Identity | Email/password or isolated guest | No external identity provider required |
+| Google Drive | Not implemented | Credentials alone do not enable it |
+| Uploaded documents | .txt/.json, up to 100 KB | Structured USD invoice JSON for October 2026 can enter reports |
 
-| Route | Purpose |
-| --- | --- |
-| `/` | Product introduction and interactive 3D Trust Core |
-| `/demo` | Guided expense-report and prompt-injection story |
-| `/dashboard` | Workspace overview, tasks, leases, and current security state |
-| `/sources` | Synthetic document library, owner previews, and sample uploads |
-| `/assistant` | Task proposal, approval, execution, and sourced report |
-| `/leases` | Lease details, revocation, and access probes |
-| `/security` | Actual gateway decisions and their stated reasons |
-| `/receipts` | Signed receipts, verification, and tampering demonstration |
-| `/settings` | Demo account context, integration status, and presentation preferences |
-
-## What is real and what is simulated
-
-| Capability | This build |
-| --- | --- |
-| Document corpus | Clearly fictional October 2026 invoices, receipt, payroll, and contract |
-| Capsule review and user approval | Real server-side workflow; proposal alone cannot grant access |
-| Signed, expiring, revocable leases | Real ECDSA-signed policy objects checked by the gateway |
-| Resource, field, operation, and destination restrictions | Deterministic server enforcement, deny by default |
-| Prompt-injection demonstration | Scripted adversarial agent request; the denial comes from the real gateway |
-| Expense report without an API key | Deterministic demo processing, labeled in the interface and receipt |
-| Expense report with `OPENAI_API_KEY` | Server-side model-assisted summary of approved, filtered fields |
-| Audit history | Persisted, ordered events linked by SHA-256 hashes |
-| Privacy receipt | Canonical payload hash, ECDSA P-256 signature, public verification key |
-| Tamper demonstration | Real hash/signature/chain verification failure on an altered copy |
-| Persistence | AES-GCM-encrypted workspace snapshots in local files or Cloudflare D1 |
-| Hosted identity | Sites-provided authenticated user identity, isolated per workspace |
-| Local identity | Localhost-only demo session, not production account authentication |
-| Google Drive | Not connected; OAuth and Picker are not implemented |
-| Blockchain | Not anchored on-chain; no transaction is fabricated |
-| PostgreSQL / Supabase | Not implemented; hosted persistence uses D1 |
+For a JSON invoice, use fields such as `vendor`, `invoiceNumber`, `date`, `amount`, `currency`, `category` and `description`. Plain text can be privately previewed; generic OCR/PDF extraction is not implemented.
 
 ## Architecture
 
-The application is written with Next.js App Router, TypeScript, React, Tailwind, accessible Radix-based controls, Motion, and Three.js through React Three Fiber and Drei. The Sites deployment runs the App Router implementation through the Vinext adapter on Cloudflare Workers. `npm run dev:next` retains the standard Next.js development path.
-
-```text
-User reviews capsule → explicit approval → signed temporary lease
-                                         ↓
-Agent operation → identity + ownership + lease + policy gateway
-                                         ↓
-                    allow selected fields / deny and return no data
-                                         ↓
-                    hash-linked audit events → report → signed receipt
+```mermaid
+flowchart LR
+  Browser[React + live 3D Trust Core] --> HTTPS[Caddy HTTPS]
+  subgraph Target[Vultr Compute deployment target]
+    HTTPS --> Node[Next.js / Node 22]
+    Node --> Auth[Email or guest session]
+    Auth --> Gateway[Deterministic policy gateway]
+    Gateway --> Data[AES-GCM encrypted workspace]
+    Gateway --> Receipt[Signed privacy receipt]
+  end
+  Gateway -->|Approved fields only| AI[Optional model provider]
 ```
 
-The server checks identity, workspace ownership, lease signature, expiration, revocation, approval state, resource, operation, requested fields, and output destination before disclosing agent data. Source text is untrusted data and cannot expand a signed lease. Owner document previews are a separate authenticated user action, not an agent permission.
+Deployment is prepared for Vultr Compute. Provisioning is deferred at the owner's request; a pre-existing private Sites prototype does not satisfy the Vultr hosting requirement. See [deployment instructions](docs/VULTR_DEPLOYMENT.md) for the exact commands and final instance checks.
 
-The signing keypair belongs to the workspace and stays inside its encrypted server record; only the public key is returned for verification. AES-GCM uses a fresh nonce and binds ciphertext to the workspace identifier. D1 writes use a version check to reject concurrent stale updates. Local file writes use a temporary file and atomic rename with an in-process per-workspace lock.
-
-The Trust Core supports `IDLE`, `TASK_REQUESTED`, `LEASE_APPROVED`, `AGENT_EXECUTING`, `ACCESS_DENIED`, `TASK_COMPLETED`, and `RECEIPT_VERIFIED`. Decorative orbit animation does not decide these states. The status indicator is a policy/workflow visualization, not a statistically calibrated measure of model safety.
-
-## Source map
-
-```text
-app/                       App Router pages and API route wrapper
-components/                Landing, workspace UI, and TrustCore3D
-lib/contracts.ts           Browser/server API types
-lib/auth.ts                Hosted identity and local demo-session boundary
-lib/server/api.ts          Validated workflow endpoints
-lib/server/policy.ts       Deterministic authorization and event chaining
-lib/server/crypto.ts       Canonicalization, hashing, signing, encryption
-lib/server/receipts.ts     Receipt creation and verification
-lib/server/storage.ts      Encrypted local/D1 persistence
-lib/server/seed.ts         Fictional documents and default policy
-db/ and drizzle/           D1 schema and migrations
-tests/                     Security acceptance tests
-worker/index.ts            Hosted API boundary and App Router handler
-scripts/                   Build and Sites environment support
-docs/DEMO_SCRIPT.md         Presenter walkthrough
-```
-
-## Verification
+## Verify
 
 ```sh
 npm run typecheck
 npm test
-npm run build
+npm run build:next
+# With the local or deployed app running:
+node scripts/smoke.mjs http://localhost:3000
 ```
 
-The automated security suite exercises allowed access, out-of-scope reads, expired and revoked leases, workspace isolation, field restrictions, receipt integrity, and receipt tampering. The standard Next.js production build is available as `npm run build:next`; `npm run build` produces the Worker deployment in `dist/`.
+Security tests cover allowed/denied reads, lease expiry/revocation, tenant isolation, field/operation/destination limits, lease forgery, prompt injection, receipt integrity/tampering, provider disclosure, revocation during inference and account/session behavior. The HTTP smoke test traverses all app pages and the complete report workflow using an isolated guest.
 
-### Verify a receipt entirely offline
-
-Download a signed receipt using the download button in Privacy receipts. The standalone verifier uses only Node's built-in modules: no running app, npm installation, network, account, API key, or server private key is needed.
+Download a receipt and verify it without running the application:
 
 ```sh
-node scripts/verify-receipt.mjs /path/to/borrow-receipt.json
+node scripts/verify-receipt.mjs receipt.json
+node scripts/verify-receipt.mjs receipt.json --expected-key public-key.json
 ```
 
-It checks the canonical payload hash, ECDSA P-256 signature, every link in the audit event chain, the final audit root, and consistency of envelope fields duplicated in the signed payload, including receipt, task, and lease identifiers. Exit codes are `0` for passed checks, `1` for failed verification, and `2` for invalid input or usage. Add `--json` for machine-readable results.
+Without an independently trusted public key, verification establishes consistency with the included key, not the signing operator's identity.
 
-To establish that the receipt came from the key you expect, obtain the workspace public JWK through a separately trusted channel and pin it:
+## Deploy on Vultr
+
+The repository includes a non-root multi-stage Docker image and Caddy TLS reverse proxy. The Next.js backend and frontend run on the Compute instance; its encrypted data lives in a persistent Docker volume.
 
 ```sh
-node scripts/verify-receipt.mjs /path/to/borrow-receipt.json \
-  --expected-key /path/to/trusted-public-key.json
+cp .env.example .env.production
+# Set a real BORROW_MASTER_KEY; do not commit this file.
+export APP_DOMAIN=borrow.your-domain.example
+docker compose --env-file .env.production -f deploy/compose.yaml up -d --build
 ```
 
-The expected key file must contain the public EC P-256 JWK, with `kty`, `crv`, `x`, and `y` fields. It must not contain a private `d` field. The verifier also prints a SHA-256 fingerprint of the canonical public-key coordinates for comparison.
+Point the hostname at the instance, open 80/443 and restrict SSH to your IP. See [VULTR_DEPLOYMENT.md](docs/VULTR_DEPLOYMENT.md) for provisioning prerequisites, backups and verification. `/api/health` reports service status without exposing private records.
 
-Without `--expected-key`, a valid result establishes integrity under the key included in the receipt; it does **not** establish the signer's identity. Copying the key out of the same untrusted receipt does not independently establish trust. Verification also does not prove source-document truth, exhaustive monitoring, or that a separate exported report matches the receipt's signed report hash.
+## Project map
 
-## Deploy
+- `app/` — App Router pages, account and workspace API routes
+- `components/` — professional interface and reusable `TrustCore3D`
+- `lib/server/` — accounts, scoped authorization, encrypted storage, report execution, signed receipts
+- `tests/` — security and account regressions
+- `deploy/` — Vultr Compute Docker Compose and HTTPS proxy
+- `docs/` — architecture, judging walkthrough and submission checklist
+- `scripts/verify-receipt.mjs` — standalone offline verifier
+- `worker/`, `db/`, `drizzle/` — separate legacy Sites/D1 deployment support
 
-The tracked `.openai/hosting.json` identifies this private Site and declares the D1 binding `DB`. Keep that Site identity when updating this deployment. A separate deployment should use its own Site identity, database, and secret.
+## Honest limits
 
-1. Configure `BORROW_MASTER_KEY` as a **server secret** with the same 64-hex format. Set `BORROW_REQUIRE_D1=1`. Do not enable localhost demo authentication for hosted access.
-2. Optionally configure `OPENAI_API_KEY` as a server secret and `OPENAI_MODEL` as the desired supported model. Never use a `NEXT_PUBLIC_` prefix for credentials.
-3. Apply the checked-in D1 migration to the provisioned `DB`. The Sites publishing workflow applies declared migrations before the Worker is uploaded.
-4. Build the application and publish the exact committed source and build archive through Sites. Preserve its private audience unless the owner deliberately changes access.
-5. Verify an authenticated task, blocked payroll access, receipt verification, and refresh persistence in the deployed environment.
-
-For standard Node hosting, use the Next.js build and server with durable private storage or implement a database adapter. A local filesystem on an ephemeral serverless instance is not durable storage. Do not point an internet-facing deployment at the localhost demo authentication mode.
-
-## Boundaries and remaining work
-
-- This is a complete, deliberately narrow hackathon workflow, not a general agent sandbox or a production security certification.
-- The injected instruction and adversarial tool choice are scripted for repeatable judging. With an AI key, the report summary can use a live model; arbitrary autonomous tool planning is not implemented.
-- The gateway protects the operations routed through it. It cannot prove the absence of undisclosed side channels, host compromise, or operations outside that boundary.
-- Cryptographic receipts attest to the signed record and reveal later alteration. They do not prove invoice truth, exhaustive monitoring, or a trustworthy signing-key owner. Independent verification must establish trust in the public key through a separate channel.
-- The event chain is logically append-only within the application. The hosting operator controls storage and keys; this is not an externally witnessed transparency log. Workspace reset starts a new demo history.
-- Storage encryption is at rest. The server, and a configured AI provider, process authorized plaintext. This is not end-to-end encryption.
-- Revocation blocks subsequent gateway operations and report publication. It cannot recall input already disclosed to a configured AI provider. The server checks the lease again after a provider response before publishing the report.
-- Uploaded text samples are validated and encrypted; full PDF/OCR ingestion, malware scanning, live Drive access, and general document extraction are not implemented.
-- Key rotation, account lifecycle management, production backup/recovery, externally pinned signing identities, distributed abuse controls, and database row-level policies need further operational work.
-- Reduced-motion and WebGL fallback paths keep the task controls functional. A browser that cannot render 3D receives a lightweight SVG Trust Core.
-
-No hackathon outcome is guaranteed. The strongest demonstration is the reproducible boundary: an approved task succeeds, a forbidden read fails, and the resulting evidence can be checked.
+- A deliberately narrow hackathon workflow, not a general agent sandbox or security certification.
+- No email verification, recovery flow, distributed rate limiter, key-rotation workflow or production backup service.
+- Encrypted at rest; the server and approved model provider process plaintext. This is not end-to-end encryption.
+- Revocation prevents subsequent authorized operations and report publication; it cannot recall fields already sent to a provider.
+- The event stream is logically append-only, but an operator controls storage and signing keys. No external transparency witness or on-chain anchor exists.
+- Receipts do not prove source-document truth, exhaustive monitoring or prevention of all leaks.
+- Keep a single Node replica with the current file adapter. Multiple replicas require transactional shared storage.
+- Real user interviews, geographic reach, final Vultr deployment and the on-Vultr recording must be evidenced before submission.

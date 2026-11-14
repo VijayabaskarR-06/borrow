@@ -1,0 +1,11 @@
+node_modules
+.next
+dist
+.git
+.env*
+.dev.vars
+.borrow-data
+.sites-runtime
+.wrangler
+.openai
+*.tar.gz

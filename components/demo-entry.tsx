@@ -1,0 +1,5 @@
+'use client';
+import {useState} from 'react';
+import {ArrowUpRight,Loader2} from 'lucide-react';
+/** One click into an isolated demo; existing account sessions keep their workspace. */
+export default function DemoEntry({children,className}:{children:React.ReactNode;className?:string}){const[busy,setBusy]=useState(false),[error,setError]=useState('');async function enter(){if(busy)return;setBusy(true);setError('');try{const session=await fetch('/api/auth/session');const value=await session.json() as {authenticated?:boolean};if(!value.authenticated){const r=await fetch('/api/auth/guest',{method:'POST'});if(!r.ok)throw new Error('Unable to open the demo. Please try signing in.')}window.location.assign('/demo')}catch(e){setError(e instanceof Error?e.message:'Unable to connect.');setBusy(false)}}return <span className="demo-entry"><button className={className} disabled={busy} onClick={enter}>{busy?<Loader2 size={15} className="spin"/>:null}{busy?'Opening your workspace…':children}<ArrowUpRight size={17}/></button>{error&&<span className="demo-entry-error" role="alert">{error} <a href="/login">Sign in</a></span>}</span>}

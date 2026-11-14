@@ -251,9 +251,12 @@ function Scene({ state, reduced }: { state: SecurityState; reduced: boolean }) {
   </>;
 }
 
-/** Security is driven only by the backend-derived `state` prop. Animation is decorative. */
+/** Live workspace states come from backend events; the marketing story passes illustrative states. */
 export default function TrustCore3D({ state = "IDLE", compact = false, reducedMotion, className }: Props) {
   const [supported, setSupported] = useState(false);
+  const container = useRef<HTMLDivElement>(null);
+  const [visible,setVisible] = useState(true);
+  useEffect(()=>{const el=container.current;if(!el)return;let intersecting=true;const update=()=>setVisible(intersecting&&!document.hidden);const observer=new IntersectionObserver(entries=>{intersecting=entries[0]?.isIntersecting??false;update();},{rootMargin:"80px"});observer.observe(el);document.addEventListener("visibilitychange",update);return()=>{observer.disconnect();document.removeEventListener("visibilitychange",update)}},[]);
   const [systemReduced, setSystemReduced] = useState(false);
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -269,9 +272,9 @@ export default function TrustCore3D({ state = "IDLE", compact = false, reducedMo
   }, []);
   const reduced = reducedMotion ?? systemReduced;
   const fallback = <CoreFallback state={state} />;
-  return <div className={className} role="img" aria-label={STATE_LABELS[state]} data-security-state={state} style={{ width: "100%", height: "100%", minHeight: compact ? 230 : 300, position: "relative", touchAction: "pan-y" }}>
+  return <div ref={container} className={className} role="img" aria-label={STATE_LABELS[state]} data-security-state={state} style={{ width: "100%", height: "100%", minHeight: compact ? 230 : 300, position: "relative", touchAction: "pan-y" }}>
     {supported ? <SceneBoundary fallback={fallback}>
-      <Canvas aria-hidden="true" camera={{ position: [0, .25, compact ? 8.7 : 8.4], fov: 44 }} dpr={[1, 1.5]} frameloop={reduced ? "demand" : "always"} gl={{ alpha: true, antialias: true, powerPreference: "low-power", toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }} style={{ background: "transparent", touchAction: "pan-y" }}>
+      <Canvas aria-hidden="true" camera={{ position: [0, .25, compact ? 8.7 : 8.4], fov: 44 }} dpr={[1, 1.5]} frameloop={reduced || !visible ? "demand" : "always"} gl={{ alpha: true, antialias: true, powerPreference: "low-power", toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }} style={{ background: "transparent", touchAction: "pan-y" }}>
         <ContextGuard onLost={() => setSupported(false)} />
         <Suspense fallback={null}><Scene state={state} reduced={reduced} /></Suspense>
       </Canvas>

@@ -10,7 +10,7 @@
 
 ## 0:00–0:25 — Set the stakes
 
-Show the landing-page Trust Core. Drag it briefly, then open the demo workspace.
+Show the landing-page Trust Core. Drag it briefly, then scroll through authorize → contain → verify. Explain that this is an illustrative preview. Click Experience BORROW to start an isolated live demo without an email. Email sign-in is available for returning users.
 
 > “AI assistants need access to be useful. But access should belong to a task, not become an open-ended privilege. BORROW lets your AI borrow exactly what it needs—and gives you evidence of what happened.”
 
@@ -97,3 +97,7 @@ No. Records are encrypted at rest, and the server decrypts authorized fields to 
 **What would you build next?**
 
 User-selected Drive ingestion, a mature production identity and key-management lifecycle, broader structured document extraction, externally witnessed receipt commitments, and adversarial evaluation of live tool-planning agents. The existing gateway remains the authorization boundary for those integrations.
+
+## Final recording evidence
+
+Vultr deployment is deferred. The final submission video must be recorded after deployment and include the public HTTPS URL plus the actual Compute instance in the console. Do not show account credentials or billing details. A local rehearsal does not satisfy that requirement.

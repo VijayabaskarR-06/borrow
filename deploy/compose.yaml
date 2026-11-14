@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ../.env.production
+    environment:
+      NODE_ENV: production
+      BORROW_ALLOW_LOCAL_DEMO: 'false'
+      BORROW_DATA_DIR: /app/data
+      BORROW_PUBLIC_ORIGIN: https://${APP_DOMAIN:?Set APP_DOMAIN}
+      BORROW_REQUIRE_D1: '0'
+    volumes:
+      - borrow_data:/app/data
+    ports:
+      - 127.0.0.1:3000:3000
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set APP_DOMAIN to the DNS hostname pointing at this instance}
+    ports: ['80:80', '443:443', '443:443/udp']
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+volumes:
+  borrow_data:
+  caddy_data:
+  caddy_config:
