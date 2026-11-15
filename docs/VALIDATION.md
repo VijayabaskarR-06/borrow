@@ -9,11 +9,13 @@
 - HTTP smoke test against the production server (with legacy local auth disabled and the public origin explicitly configured): 9 pages, isolated guest entry, explicit approval, scoped execution, actual payroll denial, report generation, receipt verification/tampering, revocation and persisted history.
 - Additional production HTTP release check: secure cookie flags, account signup/signout/signin, rejected credentials and forged sessions, cross-origin write rejection, structured invoice upload/preview/report, private-field filtering, offline signature/tamper verification, persisted account history and cross-workspace document isolation.
 - Official npm production-dependency audit: zero known advisories at the time of this run (`npm audit --omit=dev --registry=https://registry.npmjs.org`). Optional legacy Sites build tooling still has development-dependency advisories; this does not certify the application as vulnerability-free.
-- Public repository and GitHub CI: https://github.com/VijayabaskarR-06/borrow/actions/runs/43635366847
+- Public repository and GitHub CI: https://github.com/VijayabaskarR-06/borrow/actions/runs/43665857695
 
 ## Browser review
 
 - Final product design reviewed in Chrome: desktop hero, interactive approval preview, sticky chapter transitions to denied and verified states, gateway allow/deny comparison and receipt section. iPhone 16 emulation (393 × 852) reviewed: homepage, receipt, guest entry, workspace and permission review. This is browser emulation, not a physical-device test.
+- Live browser workflow on the final production build: guest entry, permission review/approval, start, real payroll denial, contain/continue, $3,784.50 report, receipt verification, tamper rejection and successful re-verification.
+- Browser downloads confirmed: `borrow-october-report.json` contains three invoice items totaling $3,784.50. The downloaded `borrow-receipt-083c033a.json` also passes the standalone offline verifier (hash, signature, event chain and envelope).
 
 ## Outstanding evidence
 
