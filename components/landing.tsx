@@ -25,6 +25,7 @@ import DemoEntry from "./demo-entry";
 import BrandIntro from "./brand-intro";
 import "./landing.css";
 import "./landing-awards.css";
+import "./landing-experience.css";
 
 const repository = "https://github.com/VijayabaskarR-06/borrow";
 const chapters = [
@@ -207,6 +208,7 @@ function ProductPreview() {
 
 export default function Landing() {
   const [chapter, setChapter] = useState(0);
+  const [scene, setScene] = useState(0);
   const [attack, setAttack] = useState(true);
   const story = useRef<HTMLElement>(null);
   const hero = useRef<HTMLElement>(null);
@@ -235,9 +237,22 @@ export default function Landing() {
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    const ids = ["home", "how-it-works", "enforcement", "proof"];
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) if (entry.isIntersecting) setScene(ids.indexOf(entry.target.id));
+    }, { rootMargin: "-35% 0px -45% 0px" });
+    ids.forEach((id) => { const node = document.getElementById(id); if (node) observer.observe(node); });
+    return () => observer.disconnect();
+  }, []);
   return (
     <div className="borrow-site">
       <motion.div className="page-progress" style={{ scaleX: pageProgress }} aria-hidden="true" />
+      <nav className="scene-rail" aria-label="Page scenes">
+        {[["home", "Intro"], ["how-it-works", "Permission"], ["enforcement", "Boundary"], ["proof", "Proof"]].map(([id, label], index) => (
+          <a key={id} href={"#" + id} aria-label={label} aria-current={scene === index ? "location" : undefined}><span />{label}</a>
+        ))}
+      </nav>
       <BrandIntro />
       <a className="borrow-skip" href="#main">
         Skip to content
@@ -268,34 +283,36 @@ export default function Landing() {
         </div>
       </header>
       <main id="main">
-        <section className="site-hero" ref={hero}>
+        <section className="site-hero" id="home" ref={hero}>
           <div className="hero-editorial">
             <Reveal>
               <span className="section-label">
                 <span className="blue-dot" />
-                PRIVATE EXPENSE RECONCILIATION
+                THE AI WORKSPACE WITH BOUNDARIES
               </span>
               <h1>
-                Get the report.
+                Let your data work.
                 <br />
                 Keep the <em>keys.</em>
               </h1>
               <p>
-                Import invoices and payment records. Find duplicates and missing
-                evidence. Approve only the data this one task needs.
+                Reconcile real invoices and payment records with access that
+                expires when the work is done.
               </p>
               <div className="hero-cta">
-                <DemoEntry className="site-button primary" destination="/sources" requireAccount>
-                  Reconcile your records
+                <DemoEntry className="hero-prompt" destination="/sources" requireAccount>
+                  <span className="hero-prompt-symbol"><FileText size={19} /></span>
+                  <span className="hero-prompt-copy">Reconcile my invoices and payments.</span>
+                  <span className="hero-prompt-action">Start with my records <ArrowRight size={16} /></span>
                 </DemoEntry>
-                <a className="site-button text-button" href="#how-it-works">
+              </div>
+              <div className="hero-secondary">
+                <span>Encrypted workspace · Scoped access · Signed proof</span>
+                <a href="#how-it-works">
                   See how it works
                   <ArrowDown size={15} />
                 </a>
               </div>
-              <span className="hero-note">
-                Your records stay encrypted in your account. A sample flow is available without sign-in.
-              </span>
             </Reveal>
           </div>
           <motion.div
