@@ -9,8 +9,9 @@
 - HTTP smoke test against the production server (with legacy local auth disabled and the public origin explicitly configured): 9 pages, isolated guest entry, explicit approval, scoped execution, actual payroll denial, report generation, receipt verification/tampering, revocation and persisted history.
 - Additional production HTTP release check: secure cookie flags, account signup/signout/signin, rejected credentials and forged sessions, cross-origin write rejection, structured invoice upload/preview/report, private-field filtering, offline signature/tamper verification, persisted account history and cross-workspace document isolation.
 - Clean `npm ci`, TypeScript check, all 17 tests and the Next.js production build pass after removing the unused hosted prototype. An npm production-dependency audit reports zero known advisories at the time of this run (`npm audit --omit=dev --registry=https://registry.npmjs.org`); this does not certify the application as vulnerability-free.
-- Public repository and GitHub CI: https://github.com/VijayabaskarR-06/borrow/actions/runs/43666160931
+- Public repository and GitHub CI for release `39e5fab`: https://github.com/VijayabaskarR-06/borrow/actions/runs/43674863618
 - Actual Vultr release: both `smoke.mjs` and `release-check.mjs` pass against https://borrow.139-84-216-230.sslip.io. TLS certificate validation succeeds; HTTP redirects to HTTPS.
+- After the repository cleanup, both public checks passed again against the rebuilt Vultr container.
 - Production Docker runtime: app runs as non-root UID 1001, Node binds only 127.0.0.1:3000, and the environment file is mode 0600.
 - Container recreation: original session, email sign-in, encrypted workspace, completed report, receipt hash and signing key survive (`scripts/persistence-check.mjs`).
 
