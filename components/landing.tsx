@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   ArrowDown,
   ArrowRight,
@@ -24,6 +24,7 @@ import TrustCore3D, { type SecurityState } from "./trust-core-3d";
 import DemoEntry from "./demo-entry";
 import BrandIntro from "./brand-intro";
 import "./landing.css";
+import "./landing-awards.css";
 
 const repository = "https://github.com/VijayabaskarR-06/borrow";
 const chapters = [
@@ -92,10 +93,10 @@ function Reveal({
   return (
     <motion.div
       className={className}
-      initial={false}
+      initial={reduced ? false : { opacity: 0, y: 34 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: reduced ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: reduced ? 0 : 0.85, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
@@ -208,7 +209,17 @@ export default function Landing() {
   const [chapter, setChapter] = useState(0);
   const [attack, setAttack] = useState(true);
   const story = useRef<HTMLElement>(null);
+  const hero = useRef<HTMLElement>(null);
+  const interlude = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  const { scrollYProgress: pageProgress } = useScroll();
+  const { scrollYProgress: heroProgress } = useScroll({ target: hero, offset: ["start start", "end start"] });
+  const { scrollYProgress: interludeProgress } = useScroll({ target: interlude, offset: ["start end", "end start"] });
+  const heroLift = useTransform(heroProgress, [0, 1], [0, -58]);
+  const heroRotate = useTransform(heroProgress, [0, 1], [0, -2.5]);
+  const interludeWord = useTransform(interludeProgress, [0, 0.5, 1], [90, 0, -90]);
+  const interludeOrb = useTransform(interludeProgress, [0, 1], [-90, 90]);
+  const interludeScale = useTransform(interludeProgress, [0, 0.5, 1], [0.72, 1, 1.2]);
   useEffect(() => {
     const nodes =
       story.current?.querySelectorAll<HTMLElement>("[data-chapter]");
@@ -226,6 +237,7 @@ export default function Landing() {
   }, []);
   return (
     <div className="borrow-site">
+      <motion.div className="page-progress" style={{ scaleX: pageProgress }} aria-hidden="true" />
       <BrandIntro />
       <a className="borrow-skip" href="#main">
         Skip to content
@@ -256,7 +268,7 @@ export default function Landing() {
         </div>
       </header>
       <main id="main">
-        <section className="site-hero">
+        <section className="site-hero" ref={hero}>
           <div className="hero-editorial">
             <Reveal>
               <span className="section-label">
@@ -289,9 +301,7 @@ export default function Landing() {
           </div>
           <motion.div
             className="hero-product"
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduced ? 0 : 0.8, delay: 0.15 }}
+            style={reduced ? undefined : { y: heroLift, rotate: heroRotate }}
           >
             <ProductPreview />
           </motion.div>
@@ -319,6 +329,23 @@ export default function Landing() {
             <Fingerprint size={17} />
             Verifiable privacy receipts
           </span>
+        </section>
+        <section className="scroll-interlude" ref={interlude} aria-label="Our approach to AI access">
+          <div className="interlude-sticky">
+            <div className="interlude-grid" aria-hidden="true" />
+            <span className="interlude-kicker">A BETTER DEFAULT / 001</span>
+            <motion.div className="interlude-orbit" style={reduced ? undefined : { x: interludeOrb, scale: interludeScale }} aria-hidden="true">
+              <span className="orbit-ring orbit-ring-one" />
+              <span className="orbit-ring orbit-ring-two" />
+              <span className="orbit-core"><KeyRound size={42} strokeWidth={1.2} /></span>
+            </motion.div>
+            <motion.div className="interlude-statement" style={reduced ? undefined : { y: interludeWord }}>
+              <span>Access should last</span>
+              <strong>exactly as long<br />as the task.</strong>
+              <p>One request. One clear boundary. Then the door closes.</p>
+            </motion.div>
+            <span className="interlude-scroll">SCROLL TO FOLLOW THE PERMISSION <ArrowDown size={15} /></span>
+          </div>
         </section>
         <section className="story-section" id="how-it-works" ref={story}>
           <div className="story-introduction">
@@ -353,24 +380,23 @@ export default function Landing() {
                     reducedMotion={!!reduced}
                   />
                 </div>
-                <div
-                  className={
-                    "story-state " + (chapter === 2 ? "state-denied" : "")
-                  }
-                  role="status"
-                >
-                  <span>
-                    {chapter === 2 ? (
-                      <ShieldX size={20} />
-                    ) : (
-                      <ShieldCheck size={20} />
-                    )}
-                  </span>
-                  <div>
-                    <strong>{chapters[chapter].label}</strong>
-                    <p>{chapters[chapter].detail}</p>
-                  </div>
-                </div>
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={chapter}
+                    className={"story-state " + (chapter === 2 ? "state-denied" : "")}
+                    role="status"
+                    initial={reduced ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={reduced ? undefined : { opacity: 0, y: -10 }}
+                    transition={{ duration: reduced ? 0 : 0.28 }}
+                  >
+                    <span>{chapter === 2 ? <ShieldX size={20} /> : <ShieldCheck size={20} />}</span>
+                    <div>
+                      <strong>{chapters[chapter].label}</strong>
+                      <p>{chapters[chapter].detail}</p>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
                 <div className="story-progress">
                   {chapters.map((c, i) => (
                     <a
