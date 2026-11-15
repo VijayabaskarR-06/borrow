@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   ArrowDown,
   ArrowRight,
@@ -215,13 +215,35 @@ export default function Landing() {
   const interlude = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress: pageProgress } = useScroll();
-  const { scrollYProgress: heroProgress } = useScroll({ target: hero, offset: ["start start", "end start"] });
+  const heroProgress = useMotionValue(0);
   const { scrollYProgress: interludeProgress } = useScroll({ target: interlude, offset: ["start end", "end start"] });
-  const heroLift = useTransform(heroProgress, [0, 1], [0, -58]);
-  const heroRotate = useTransform(heroProgress, [0, 1], [0, -2.5]);
-  const interludeWord = useTransform(interludeProgress, [0, 0.5, 1], [90, 0, -90]);
-  const interludeOrb = useTransform(interludeProgress, [0, 1], [-90, 90]);
-  const interludeScale = useTransform(interludeProgress, [0, 0.5, 1], [0.72, 1, 1.2]);
+  const heroCopyOpacity = useTransform(heroProgress, [0, 0.14, 0.37, 0.48], [1, 1, 0.3, 0]);
+  const heroCopyY = useTransform(heroProgress, [0, 0.48], [0, -180]);
+  const heroPreviewY = useTransform(heroProgress, [0, 0.18, 0.54, 0.76], ["0vh", "-5vh", "-40vh", "-45vh"]);
+  const heroPreviewScale = useTransform(heroProgress, [0, 0.18, 0.54, 0.76], [0.88, 0.94, 1.24, 1.72]);
+  const heroPreviewRotate = useTransform(heroProgress, [0, 0.2, 0.55], [7, 5, 0]);
+  const heroCurtain = useTransform(heroProgress, [0.59, 0.81], ["circle(0% at 50% 54%)", "circle(150% at 50% 54%)"]);
+  const heroCueOpacity = useTransform(heroProgress, [0, 0.12, 0.3], [1, 1, 0]);
+  const interludeWord = useTransform(interludeProgress, [0, 0.38, 0.75, 1], [140, 0, -20, -150]);
+  const interludeWordOpacity = useTransform(interludeProgress, [0, 0.25, 0.72, 1], [0, 1, 1, 0]);
+  const interludeOrb = useTransform(interludeProgress, [0, 1], [-150, 120]);
+  const interludeScale = useTransform(interludeProgress, [0, 0.48, 1], [0.45, 1, 2.15]);
+  const interludeRotate = useTransform(interludeProgress, [0, 1], [-40, 50]);
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      const node = hero.current;
+      if (!node) return;
+      const top = node.getBoundingClientRect().top + window.scrollY;
+      const travel = Math.max(1, node.offsetHeight - window.innerHeight + 72);
+      heroProgress.set(Math.max(0, Math.min(1, (window.scrollY - top + 72) / travel)));
+    };
+    const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
+  }, [heroProgress]);
   useEffect(() => {
     const nodes =
       story.current?.querySelectorAll<HTMLElement>("[data-chapter]");
@@ -283,9 +305,11 @@ export default function Landing() {
         </div>
       </header>
       <main id="main">
-        <section className="site-hero" id="home" ref={hero}>
+        <section className="hero-sequence" id="home" ref={hero}>
+          <div className="hero-stage">
+          <div className="site-hero">
           <div className="hero-editorial">
-            <Reveal>
+            <motion.div style={reduced ? undefined : { opacity: heroCopyOpacity, y: heroCopyY }}>
               <span className="section-label">
                 <span className="blue-dot" />
                 THE AI WORKSPACE WITH BOUNDARIES
@@ -313,14 +337,16 @@ export default function Landing() {
                   <ArrowDown size={15} />
                 </a>
               </div>
-            </Reveal>
+            </motion.div>
           </div>
+          <div className="hero-product-frame">
           <motion.div
             className="hero-product"
-            style={reduced ? undefined : { y: heroLift, rotate: heroRotate }}
+            style={reduced ? undefined : { y: heroPreviewY, scale: heroPreviewScale, rotateX: heroPreviewRotate }}
           >
             <ProductPreview />
           </motion.div>
+          </div>
           <div className="hero-baseline">
             <span>BUILT FOR A SIMPLE RULE</span>
             <strong>
@@ -331,37 +357,32 @@ export default function Landing() {
               <ArrowDown size={13} />
             </a>
           </div>
-        </section>
-        <section className="principle-strip" aria-label="Core capabilities">
-          <span>
-            <KeyRound size={17} />
-            Purpose-bound permissions
-          </span>
-          <span>
-            <ShieldCheck size={17} />
-            Server-enforced boundaries
-          </span>
-          <span>
-            <Fingerprint size={17} />
-            Verifiable privacy receipts
-          </span>
+          </div>
+          <motion.div className="hero-scroll-cue" style={reduced ? undefined : { opacity: heroCueOpacity }} aria-hidden="true"><span>SCROLL TO ENTER THE WORKSPACE</span><span className="hero-cue-line" /><ArrowDown size={15} /></motion.div>
+          <motion.div className="hero-blue-curtain" style={reduced ? undefined : { clipPath: heroCurtain }} aria-hidden="true"><span className="curtain-wordmark">BORROW<span>®</span></span></motion.div>
+          </div>
         </section>
         <section className="scroll-interlude" ref={interlude} aria-label="Our approach to AI access">
           <div className="interlude-sticky">
             <div className="interlude-grid" aria-hidden="true" />
             <span className="interlude-kicker">A BETTER DEFAULT / 001</span>
-            <motion.div className="interlude-orbit" style={reduced ? undefined : { x: interludeOrb, scale: interludeScale }} aria-hidden="true">
+            <motion.div className="interlude-orbit" style={reduced ? undefined : { x: interludeOrb, scale: interludeScale, rotate: interludeRotate }} aria-hidden="true">
               <span className="orbit-ring orbit-ring-one" />
               <span className="orbit-ring orbit-ring-two" />
               <span className="orbit-core"><KeyRound size={42} strokeWidth={1.2} /></span>
             </motion.div>
-            <motion.div className="interlude-statement" style={reduced ? undefined : { y: interludeWord }}>
+            <motion.div className="interlude-statement" style={reduced ? undefined : { y: interludeWord, opacity: interludeWordOpacity }}>
               <span>Access should last</span>
               <strong>exactly as long<br />as the task.</strong>
               <p>One request. One clear boundary. Then the door closes.</p>
             </motion.div>
             <span className="interlude-scroll">SCROLL TO FOLLOW THE PERMISSION <ArrowDown size={15} /></span>
           </div>
+        </section>
+        <section className="principle-strip" aria-label="Core capabilities">
+          <span><KeyRound size={17} />Purpose-bound permissions</span>
+          <span><ShieldCheck size={17} />Server-enforced boundaries</span>
+          <span><Fingerprint size={17} />Verifiable privacy receipts</span>
         </section>
         <section className="story-section" id="how-it-works" ref={story}>
           <div className="story-introduction">
