@@ -58,7 +58,7 @@ Caddy requests an HTTPS certificate automatically. The application container run
 ## Acceptance on the actual instance
 
 1. Open the public URL in a fresh browser.
-2. Use **Try the demo**. Confirm no ChatGPT account is requested.
+2. Use **Try the demo**. Confirm the guest workspace opens without an external account.
 3. Complete expense report, payroll denial, signature verification and tamper test.
 4. Approve a second task, revoke its lease, and test invoice access; expect `LEASE_REVOKED`.
 5. Create a disposable email account, sign out, sign back in, and confirm history survives.
