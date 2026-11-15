@@ -1,5 +1,3 @@
-@font-face{font-family:'Bricolage Grotesque';src:url('/fonts/bricolage-grotesque-700.ttf') format('truetype');font-weight:700;font-display:swap}
-@font-face{font-family:'Bricolage Grotesque';src:url('/fonts/bricolage-grotesque-500.ttf') format('truetype');font-weight:500;font-display:swap}
 @font-face{font-family:'Geist';src:url('/fonts/geist-400.ttf') format('truetype');font-weight:400;font-display:swap}
 @font-face{font-family:'Geist';src:url('/fonts/geist-700.ttf') format('truetype');font-weight:700;font-display:swap}
 @font-face{font-family:'Geist Mono';src:url('/fonts/geist-mono-400.ttf') format('truetype');font-weight:400;font-display:swap}
@@ -7,7 +5,7 @@
 
 /* Reference-led visual system: porcelain, leaf green, ink and electric blue. */
 .borrow-site{--ink:#10201b;--muted:#506059;--line:#cbd4bd;--blue:#2457f5;background:#eaf0e3;color:var(--ink);font-family:'Geist',Arial,sans-serif;background-image:radial-gradient(55% 36% at 10% 0%,#cfe3c6 0%,transparent 72%),radial-gradient(44% 38% at 97% 7%,#d6e6da 0%,transparent 72%),radial-gradient(60% 42% at 70% 70%,#dcebd9 0%,transparent 78%)}
-.borrow-site h1,.borrow-site h2,.borrow-site h3,.borrow-wordmark{font-family:'Bricolage Grotesque','Arial Rounded MT Bold',Arial,sans-serif}
+.borrow-site h1,.borrow-site h2,.borrow-site h3,.borrow-wordmark{font-family:'Geist',Arial,sans-serif}
 .borrow-site h2{font-weight:700;letter-spacing:-.055em}
 .borrow-site .section-label,.interlude-kicker,.interlude-scroll,.chapter-index,.story-panel-header,.hero-baseline>span{font-family:'Geist Mono',ui-monospace,monospace;letter-spacing:.11em}
 .page-progress{background:#2457f5;height:4px}
@@ -60,8 +58,8 @@
 .interlude-sticky::after{background:radial-gradient(circle,#ffffff3f,transparent 68%)}
 .interlude-grid{opacity:.5;background-image:linear-gradient(#fff2 1px,transparent 1px),linear-gradient(90deg,#fff2 1px,transparent 1px)}
 .interlude-kicker,.interlude-scroll{color:#e5ebff}
-.interlude-statement>span{color:#cfd9ff;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:600}
-.interlude-statement strong{color:#fff;background:none;-webkit-text-fill-color:#fff;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:750;letter-spacing:-.075em}
+.interlude-statement>span{color:#cfd9ff;font-family:'Geist',Arial,sans-serif;font-weight:600}
+.interlude-statement strong{color:#fff;background:none;-webkit-text-fill-color:#fff;font-family:'Geist',Arial,sans-serif;font-weight:750;letter-spacing:-.075em}
 .interlude-statement p{color:#e6ecff}
 .orbit-ring{border-color:#ffffffbd;box-shadow:inset 0 0 50px #fff1,0 0 70px #fff3}.orbit-ring-two{border-color:#d8efffff}.orbit-core{background:radial-gradient(circle at 30% 25%,#fafcff,#b6cafa 45%,#426ae2 78%);box-shadow:0 0 100px #ffffff8c,inset 0 0 30px #ffffffa6;color:#2457f5}
 .story-section{background:#eaf0e3;padding-top:135px;padding-bottom:40px}
@@ -73,7 +71,7 @@
 .story-chapters article.active{opacity:1;transform:translateY(0)}
 .story-chapters article>div{position:relative;padding-left:32px;border-left:1px solid #aabca7}
 .story-chapters article.active>div{border-left:3px solid #2457f5}
-.story-chapters h3{font-family:'Bricolage Grotesque',Arial,sans-serif;font-size:clamp(40px,4.1vw,64px);font-weight:700;letter-spacing:-.055em}
+.story-chapters h3{font-family:'Geist',Arial,sans-serif;font-size:clamp(40px,4.1vw,64px);font-weight:700;letter-spacing:-.055em}
 .story-chapters article p{font-size:16px;color:#506059}
 .chapter-index{color:#2457f5}
 .enforcement-section{background:#f9f6ec;border-color:#cbd4bd;padding-block:clamp(130px,13vw,205px)}
@@ -101,7 +99,7 @@
 .hero-prompt-copy{font-weight:400;letter-spacing:-.012em}
 .hero-prompt-action,.site-button,.site-nav>nav,.nav-signin{font-family:'Geist',Arial,sans-serif;font-weight:700;letter-spacing:-.015em}
 .hero-secondary{font-size:12px;line-height:1.5}
-.hero-baseline>strong{font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:500;letter-spacing:-.025em}
+.hero-baseline>strong{font-family:'Geist',Arial,sans-serif;font-weight:500;letter-spacing:-.025em}
 .interlude-statement>span{font-weight:500;line-height:1.16;letter-spacing:-.045em}
 .interlude-statement strong{font-weight:700;line-height:1.01;letter-spacing:-.065em}
 .interlude-statement p{line-height:1.65}
@@ -110,3 +108,14 @@
 .chapter-detail{line-height:1.6}
 .receipt-copy h2,.closing-section h2{font-weight:500}
 @media(max-width:760px){.hero-editorial h1{line-height:1.03}.hero-editorial p{line-height:1.65}.story-chapters h3{line-height:1.15}.hero-secondary{font-size:11px}}
+
+/* Clean SaaS typography: neutral, precise and easy to scan. */
+.borrow-site h1,.borrow-site h2,.borrow-site h3,.borrow-wordmark,.interlude-statement>span,.interlude-statement strong,.hero-baseline>strong{font-family:'Geist',Arial,sans-serif}
+.hero-editorial h1{font-size:clamp(54px,6vw,88px);font-weight:700;line-height:1.08;letter-spacing:-.055em;max-width:980px;margin:26px 0 22px}
+.hero-editorial p{font-size:clamp(17px,1.45vw,20px);line-height:1.65;max-width:610px}
+.borrow-site h2{font-weight:700;letter-spacing:-.045em;line-height:1.15}
+.story-chapters h3{font-weight:700;letter-spacing:-.04em;line-height:1.16}
+.interlude-statement strong{font-weight:700;letter-spacing:-.055em;line-height:1.04}
+.receipt-copy h2,.closing-section h2{font-weight:700}
+@media(max-width:760px){.hero-editorial h1{font-size:clamp(46px,10vw,68px);line-height:1.1;letter-spacing:-.05em}}
+@media(max-width:420px){.hero-editorial h1{font-size:10.5vw}}
