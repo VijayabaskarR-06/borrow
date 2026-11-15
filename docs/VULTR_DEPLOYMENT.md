@@ -7,7 +7,7 @@
 - Vultr Cloud Compute: Bangalore, Ubuntu 24.04 LTS, 2 vCPU / 4 GB RAM / 80 GB SSD. Automatic backups enabled.
 - HTTPS terminates at Caddy. Node listens on loopback port 3000 and runs as UID 1001.
 - Encrypted records and signing keys persist in the Docker data volume. Production environment permissions are 0600.
-- App image built from release `aef873605838cc0406433fd09b0258e185e91d88`.
+- App image built from release `39e5fab72e7f61d9fd7164ee206a2424d950b0e3`.
 
 Both public HTTP suites pass. After app-container recreation, the same account can sign in and retrieve the original report and independently verifiable receipt.
 
