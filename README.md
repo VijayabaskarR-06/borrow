@@ -100,6 +100,7 @@ npm test
 npm run build:next
 # With the local or deployed app running:
 node scripts/smoke.mjs http://localhost:3000
+node scripts/real-smoke.mjs http://localhost:3000
 # Production server, with secure cookies and legacy local auth disabled:
 node scripts/release-check.mjs https://your-public-hostname
 ```
