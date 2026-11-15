@@ -32,7 +32,7 @@ Set `BORROW_ALLOW_LOCAL_DEMO=false` to require the new account/guest sign-in end
 
 ## The interactive story
 
-The landing page uses a graphite, white and electric-blue identity, a reflective chrome sculpture, and three scroll-driven chapters: authorize, contain and verify. It uses native smooth scrolling, keyboard chapter controls, reduced-motion support, and pauses off-screen WebGL scenes. The marketing states are illustrative; the workspace core is driven by actual backend events.
+The homepage and workspace share white surfaces, graphite panels and blue actions. The interactive expense workspace preview leads into four scroll-driven permission chapters, a selectable gateway-decision illustration, and a receipt example. The same Three.js trust core is reused throughout. Native smooth scrolling, keyboard controls, reduced-motion support and off-screen rendering pauses keep the story accessible. Homepage states are clearly illustrative; workspace states come from backend events.
 
 ## Three-minute walkthrough
 
@@ -77,7 +77,7 @@ flowchart LR
   Gateway -->|Approved fields only| AI[Optional model provider]
 ```
 
-Deployment is prepared for Vultr Compute. Provisioning is deferred at the owner's request; a pre-existing private Sites prototype does not satisfy the Vultr hosting requirement. See [deployment instructions](docs/VULTR_DEPLOYMENT.md) for the exact commands and final instance checks.
+Deployment is prepared for Vultr Compute. Provisioning and final public-instance validation are in progress; a pre-existing private Sites prototype does not satisfy the Vultr hosting requirement. See [deployment instructions](docs/VULTR_DEPLOYMENT.md) for the exact commands and final instance checks.
 
 ## Verify
 
@@ -87,6 +87,8 @@ npm test
 npm run build:next
 # With the local or deployed app running:
 node scripts/smoke.mjs http://localhost:3000
+# Production server, with secure cookies and legacy local auth disabled:
+node scripts/release-check.mjs https://your-public-hostname
 ```
 
 Security tests cover allowed/denied reads, lease expiry/revocation, tenant isolation, field/operation/destination limits, lease forgery, prompt injection, receipt integrity/tampering, provider disclosure, revocation during inference and account/session behavior. The HTTP smoke test traverses all app pages and the complete report workflow using an isolated guest.

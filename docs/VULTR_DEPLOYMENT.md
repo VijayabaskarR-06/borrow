@@ -1,6 +1,6 @@
 # Deploy BORROW on Vultr Compute
 
-**Status:** deployment artifacts are built for Vultr; account provisioning is deferred at the owner's request. Do not claim that the public Sites prototype is hosted on Vultr.
+**Status:** deployment artifacts are built for Vultr; account provisioning is authorized and being prepared. Do not claim that the public Sites prototype is hosted on Vultr.
 
 ## Required account inputs
 
@@ -9,7 +9,17 @@
 - SSH access and a hostname with an A record pointing at the instance. Automatic HTTPS needs that hostname and open ports 80/443.
 - Inbound SSH restricted to the operator's IP. The app's Node port is published only on loopback.
 
-## Install and run
+## Automated fresh-instance setup
+
+The repository includes `deploy/bootstrap-ubuntu.sh` for a fresh Ubuntu 24.04 server. From the cloned checkout, as root over SSH, set `APP_DOMAIN` to a hostname that resolves to the instance and run:
+
+```sh
+APP_DOMAIN=borrow.your-domain.example bash deploy/bootstrap-ubuntu.sh
+```
+
+It installs Docker from the official repository, generates a server-only master key once, preserves existing secrets, restricts SSH to the current operator IP when available, and starts the persistent app plus Caddy. Review `docker compose ps` and the HTTPS health endpoint before sharing the URL. Retain console recovery access if your operator IP changes.
+
+## Manual install and run
 
 Install Docker Engine and the Compose plugin from Docker's official Ubuntu instructions. Clone the public repository, then:
 
@@ -45,7 +55,8 @@ Caddy requests an HTTPS certificate automatically. The application container run
 5. Create a disposable email account, sign out, sign back in, and confirm history survives.
 6. Restart the app container and confirm persisted account/task data remains.
 7. Run `node scripts/smoke.mjs https://$APP_DOMAIN` from your local machine. It creates only isolated guest test workspaces.
-8. Record the final walkthrough with the public URL and Vultr console/instance visible. Do not show API keys, SSH keys or billing details.
+8. Run `node scripts/release-check.mjs https://$APP_DOMAIN` for production cookie flags, account lifecycle, uploads, independent receipt verification and cross-workspace document isolation.
+9. Record the final walkthrough with the public URL and Vultr console/instance visible. Do not show API keys, SSH keys or billing details.
 
 ## Updates and backup
 
