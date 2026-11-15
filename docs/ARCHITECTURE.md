@@ -22,7 +22,7 @@ flowchart LR
   P -->|Only explicitly approved fields and destination| AI[Optional OpenAI analysis]
 ```
 
-The standalone Node deployment uses a single application process and persistent Docker volume. The existing private Sites prototype uses D1; it is a separate deployment, not evidence of Vultr hosting.
+The live Node deployment uses a single application process and persistent Docker volume.
 
 ## Task sequence
 
