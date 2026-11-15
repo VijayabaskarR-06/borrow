@@ -13,12 +13,7 @@ async function validSignature(value: string, supplied: string, secret: string) {
   const bytes = Uint8Array.from(supplied.match(/.{2}/g)!, h => parseInt(h, 16));
   return crypto.subtle.verify('HMAC', await sessionKey(secret), bytes, enc.encode(value));
 }
-export async function authenticate(request: Request, env: Record<string, unknown>, hosted: boolean): Promise<{ userId: string; cookie?: string } | null> {
-  // Hosted identity is accepted only behind the Sites authenticated edge.
-  if (hosted) {
-    const id = request.headers.get('oai-authenticated-user-id');
-    if (id) return { userId: id };
-  }
+export async function authenticate(request: Request, env: Record<string, unknown>): Promise<{ userId: string; cookie?: string } | null> {
   const url = new URL(request.url);
   const local = ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
   if (!local || env.BORROW_ALLOW_LOCAL_DEMO !== 'true') return null;
