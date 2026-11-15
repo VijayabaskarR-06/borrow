@@ -128,7 +128,6 @@ Point the hostname at the instance, open 80/443 and restrict SSH to your IP. See
 - `deploy/` — Vultr Compute Docker Compose and HTTPS proxy
 - `docs/` — architecture, judging walkthrough and submission checklist
 - `scripts/verify-receipt.mjs` — standalone offline verifier
-- `worker/`, `db/`, `drizzle/` — separate legacy Sites/D1 deployment support
 
 ## Honest limits
 
@@ -139,4 +138,4 @@ Point the hostname at the instance, open 80/443 and restrict SSH to your IP. See
 - The event stream is logically append-only, but an operator controls storage and signing keys. No external transparency witness or on-chain anchor exists.
 - Receipts do not prove source-document truth, exhaustive monitoring or prevention of all leaks.
 - Keep a single Node replica with the current file adapter. Multiple replicas require transactional shared storage.
-- Real user interviews, geographic reach, final Vultr deployment and the on-Vultr recording must be evidenced before submission.
+- Real user interviews, geographic reach and the on-Vultr recording must be evidenced before submission.
