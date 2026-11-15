@@ -6,6 +6,8 @@ BORROW solves a concrete delegation problem: an expense-report agent needs invoi
 
 The following is the **live Vultr deployment**, verified on 15 November 2026. The public application is [https://borrow.139-84-216-230.sslip.io](https://borrow.139-84-216-230.sslip.io).
 
+![Borrow live architecture: scoped leases, server policy gateway, encrypted workspace, and signed evidence](evidence/borrow-architecture.png)
+
 ```mermaid
 flowchart LR
   U[Browser: React + Three.js] -->|HTTPS| C[Caddy: TLS + proxy]

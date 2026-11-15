@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Borrow live system architecture</title>
+  <desc id="desc">A user approves a scoped expense-report lease in the browser. On Vultr Cloud Compute in Bangalore, Caddy forwards HTTPS to Next.js. The server policy gateway checks every operation before encrypted workspace data can be read. A scripted payroll request is denied. The authorized report completes and a signed privacy receipt can be verified independently. Blockchain anchoring is planned, not active.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FAFCFF"/><stop offset="1" stop-color="#EEF4FB"/></linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173B77"/><stop offset="1" stop-color="#071D40"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#256DE3"/><stop offset="1" stop-color="#1352BC"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="13" stdDeviation="23" flood-color="#12315D" flood-opacity=".09"/></filter>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#D2DEED"/></pattern>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto"><path d="M2 2L10 6L2 10" fill="none" stroke="#2871D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="arrowMuted" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto"><path d="M2 2L10 6L2 10" fill="none" stroke="#8297B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="2400" height="1500" fill="url(#paper)"/>
+  <circle cx="2160" cy="125" r="440" fill="#E7F0FC" opacity=".65"/>
+  <path d="M0 325H2400M0 1130H2400" stroke="#DCE5F0" stroke-width="2"/>
+  <rect x="0" y="325" width="2400" height="805" fill="url(#dots)" opacity=".46"/>
+
+  <!-- Masthead -->
+  <rect x="112" y="84" width="56" height="56" rx="16" fill="url(#blue)"/>
+  <path d="M131 103v18h12c12 0 12-18 0-18h-12zm0 18v2h14c13 0 13 18 0 18h-14v-20" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,-4)"/>
+  <text x="184" y="126" font-family="Avenir Next, Arial, sans-serif" font-size="34" font-weight="700" fill="#0D2342">Borrow</text>
+  <text x="344" y="124" font-family="Avenir Next, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="4" fill="#6F829B">SYSTEM ARCHITECTURE</text>
+  <rect x="1888" y="89" width="400" height="50" rx="25" fill="#E8F1FE" stroke="#C4DAF8"/>
+  <circle cx="1920" cy="114" r="7" fill="#2C75DF"/>
+  <text x="1940" y="121" font-family="Avenir Next, Arial, sans-serif" font-size="20" font-weight="700" fill="#22549A">LIVE ON VULTR · BANGALORE</text>
+
+  <text x="112" y="228" font-family="Avenir Next, Arial, sans-serif" font-size="74" font-weight="700" letter-spacing="-3" fill="#0B1F3A">A permission boundary you can see.</text>
+  <text x="115" y="283" font-family="Avenir Next, Arial, sans-serif" font-size="27" fill="#536781">The task processor handles the request. Borrow decides what it may access, records the decision, then closes the lease.</text>
+
+  <!-- Browser card -->
+  <rect x="112" y="406" width="462" height="641" rx="29" fill="white" stroke="#DCE6F2" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="112" y="406" width="462" height="66" rx="29" fill="#F4F7FB"/>
+  <path d="M112 453v19h462v-19" fill="#F4F7FB"/>
+  <circle cx="149" cy="440" r="7" fill="#A9B9CD"/><circle cx="171" cy="440" r="7" fill="#A9B9CD"/><circle cx="193" cy="440" r="7" fill="#A9B9CD"/>
+  <text x="224" y="447" font-family="Avenir Next, Arial, sans-serif" font-size="18" fill="#6C809A">borrow.139-84-216-230.sslip.io</text>
+  <text x="145" y="528" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#2A6BCE">01 / USER INTENT</text>
+  <text x="145" y="594" font-family="Avenir Next, Arial, sans-serif" font-size="36" font-weight="700" fill="#122C4C">Review before</text>
+  <text x="145" y="638" font-family="Avenir Next, Arial, sans-serif" font-size="36" font-weight="700" fill="#122C4C">the AI begins.</text>
+  <rect x="145" y="683" width="395" height="225" rx="18" fill="#F5F8FC" stroke="#DFE8F2"/>
+  <text x="171" y="724" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#6E829D">INTENT CAPSULE</text>
+  <text x="171" y="765" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700" fill="#132E50">October expense report</text>
+  <path d="M171 790H514" stroke="#D7E2EF" stroke-width="2"/>
+  <circle cx="181" cy="823" r="5" fill="#2E72D4"/><text x="201" y="831" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#506681">Selected invoice fields only</text>
+  <circle cx="181" cy="860" r="5" fill="#2E72D4"/><text x="201" y="868" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#506681">Time-limited access</text>
+  <rect x="145" y="933" width="395" height="75" rx="16" fill="url(#blue)"/>
+  <text x="342" y="980" text-anchor="middle" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700" fill="white">Approve limited access  →</text>
+
+  <!-- Trust path into compute boundary -->
+  <path d="M581 726H691" fill="none" stroke="#2871D8" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="592" y="674" width="84" height="32" rx="16" fill="#E8F1FF"/>
+  <text x="634" y="697" text-anchor="middle" font-family="Avenir Next, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1" fill="#2865BE">HTTPS</text>
+
+  <!-- Platform boundary -->
+  <rect x="708" y="377" width="1580" height="670" rx="34" fill="#F7FAFE" stroke="#A8C5E8" stroke-width="3" stroke-dasharray="11 9"/>
+  <rect x="739" y="392" width="540" height="53" rx="15" fill="#E9F2FE"/>
+  <text x="766" y="427" font-family="Avenir Next, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="2" fill="#215FAF">VULTR CLOUD COMPUTE</text>
+  <text x="1090" y="427" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#466E9F">Bangalore · Ubuntu 24.04</text>
+  <text x="2106" y="423" text-anchor="end" font-family="Avenir Next, Arial, sans-serif" font-size="18" fill="#7289A5">Docker Compose · single app replica</text>
+
+  <!-- Edge -->
+  <rect x="746" y="498" width="236" height="281" rx="23" fill="white" stroke="#D6E3F1" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="778" y="535" width="62" height="62" rx="18" fill="#E8F2FE"/>
+  <path d="M797 565l12-12 12 12v13h-24z" fill="none" stroke="#2871D8" stroke-width="4" stroke-linejoin="round"/>
+  <text x="777" y="644" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#2A6BCE">02 / EDGE</text>
+  <text x="777" y="689" font-family="Avenir Next, Arial, sans-serif" font-size="31" font-weight="700" fill="#102A4C">Caddy</text>
+  <text x="777" y="726" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#647991">TLS + reverse proxy</text>
+
+  <!-- App -->
+  <rect x="1017" y="498" width="320" height="281" rx="23" fill="white" stroke="#D6E3F1" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="1049" y="535" width="62" height="62" rx="18" fill="#E8F2FE"/>
+  <rect x="1066" y="552" width="28" height="28" rx="5" fill="none" stroke="#2871D8" stroke-width="4"/>
+  <path d="M1073 560h14M1073 568h14" stroke="#2871D8" stroke-width="3"/>
+  <text x="1049" y="644" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#2A6BCE">03 / APPLICATION</text>
+  <text x="1049" y="689" font-family="Avenir Next, Arial, sans-serif" font-size="31" font-weight="700" fill="#102A4C">Next.js / Node</text>
+  <text x="1049" y="726" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#647991">Identity · guest isolation</text>
+  <text x="1049" y="754" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#647991">Signed, scoped leases</text>
+
+  <!-- Central focal point: gateway -->
+  <rect x="1372" y="477" width="468" height="324" rx="27" fill="url(#navy)" filter="url(#shadow)"/>
+  <circle cx="1772" cy="545" r="104" fill="none" stroke="#3B77CF" stroke-width="1" opacity=".25"/>
+  <circle cx="1772" cy="545" r="70" fill="none" stroke="#6BA2F4" stroke-width="1" opacity=".24"/>
+  <path d="M1410 522l23-9 23 9v17c0 19-11 31-23 38-12-7-23-19-23-38z" fill="none" stroke="#8FBCFF" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M1423 539l8 8 14-18" fill="none" stroke="#8FBCFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1411" y="624" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#91C0FF">04 / ENFORCEMENT</text>
+  <text x="1411" y="674" font-family="Avenir Next, Arial, sans-serif" font-size="39" font-weight="700" fill="white">Policy gateway</text>
+  <text x="1411" y="716" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#D4E4FC">Every protected action is checked:</text>
+  <text x="1411" y="749" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#D4E4FC">identity · fields · action · destination</text>
+  <text x="1411" y="778" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#D4E4FC">expiry · revocation · workspace</text>
+
+  <!-- Encrypted data -->
+  <rect x="1876" y="498" width="373" height="281" rx="23" fill="white" stroke="#D6E3F1" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="1908" y="535" width="62" height="62" rx="18" fill="#E8F2FE"/>
+  <rect x="1923" y="561" width="32" height="24" rx="5" fill="none" stroke="#2871D8" stroke-width="4"/>
+  <path d="M1930 561v-8a9 9 0 0 1 18 0v8" fill="none" stroke="#2871D8" stroke-width="4"/>
+  <text x="1908" y="644" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#2A6BCE">05 / WORKSPACE</text>
+  <text x="1908" y="689" font-family="Avenir Next, Arial, sans-serif" font-size="31" font-weight="700" fill="#102A4C">Encrypted records</text>
+  <text x="1908" y="726" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#647991">AES-GCM · Docker volume</text>
+  <text x="1908" y="754" font-family="Avenir Next, Arial, sans-serif" font-size="21" fill="#647991">Invoices + report state</text>
+
+  <!-- Primary flow arrows -->
+  <path d="M987 640h22M1342 640h22M1845 640h23" fill="none" stroke="#2871D8" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Outcome row -->
+  <path d="M1606 805v51" fill="none" stroke="#5C86BE" stroke-width="3" marker-end="url(#arrowMuted)"/>
+  <path d="M1178 804v51" fill="none" stroke="#93ACCA" stroke-width="3" stroke-dasharray="7 7"/>
+  <path d="M1772 805v34h290v17" fill="none" stroke="#93ACCA" stroke-width="3" stroke-dasharray="7 7" marker-end="url(#arrowMuted)"/>
+  <rect x="1017" y="873" width="321" height="139" rx="18" fill="#EAF2FD" stroke="#CFE0F6"/>
+  <circle cx="1055" cy="914" r="14" fill="#2470DA"/><path d="M1048 914l5 5 10-11" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1083" y="921" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700" fill="#18395F">Authorized work</text>
+  <text x="1050" y="964" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#526C8C">Deterministic expense report</text>
+  <text x="1050" y="991" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#526C8C">$3,784.50 · lease then closes</text>
+
+  <rect x="1372" y="873" width="468" height="139" rx="18" fill="#FFF3F1" stroke="#F3CCC4"/>
+  <circle cx="1410" cy="914" r="14" fill="#C45A4B"/><path d="M1404 908l12 12m0-12l-12 12" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <text x="1438" y="921" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700" fill="#813D38">Payroll request denied</text>
+  <text x="1405" y="964" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#865E59">Scripted attack · real server denial</text>
+  <text x="1405" y="991" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#865E59">OUTSIDE_APPROVED_SCOPE</text>
+
+  <rect x="1876" y="873" width="373" height="139" rx="18" fill="#EEF7F5" stroke="#CFE9E3"/>
+  <circle cx="1914" cy="914" r="14" fill="#237C70"/><path d="M1907 914l5 5 10-11" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1942" y="921" font-family="Avenir Next, Arial, sans-serif" font-size="24" font-weight="700" fill="#1A5E58">Signed evidence</text>
+  <text x="1909" y="964" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#537E7A">SHA-256 · ECDSA P-256</text>
+  <text x="1909" y="991" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#537E7A">Hash-linked audit events</text>
+
+  <!-- Bottom editorial strip -->
+  <text x="112" y="1199" font-family="Avenir Next, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#2A6BCE">THE TRUST MODEL</text>
+  <text x="112" y="1258" font-family="Avenir Next, Arial, sans-serif" font-size="42" font-weight="700" fill="#102A4B">The server keeps the keys.</text>
+  <text x="112" y="1301" font-family="Avenir Next, Arial, sans-serif" font-size="23" fill="#5D7089">The 3D Trust Core visualizes decisions; authorization happens in the gateway.</text>
+  <rect x="1171" y="1176" width="1117" height="166" rx="22" fill="white" stroke="#DCE6F2" stroke-width="2"/>
+  <path d="M1730 1204v111" stroke="#DDE7F2" stroke-width="2"/>
+  <text x="1210" y="1214" font-family="Avenir Next, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="#2A6BCE">VERIFIABLE TODAY</text>
+  <text x="1210" y="1255" font-family="Avenir Next, Arial, sans-serif" font-size="25" font-weight="700" fill="#18365B">Download + verify the receipt</text>
+  <text x="1210" y="1292" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#60758F">Original passes; altered receipt fails.</text>
+  <text x="1771" y="1214" font-family="Avenir Next, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="#7C8EA4">FUTURE EXTENSION</text>
+  <text x="1771" y="1255" font-family="Avenir Next, Arial, sans-serif" font-size="25" font-weight="700" fill="#18365B">Blockchain anchoring</text>
+  <text x="1771" y="1292" font-family="Avenir Next, Arial, sans-serif" font-size="20" fill="#60758F">Planned; no live chain in this build.</text>
+
+  <path d="M112 1392H2288" stroke="#CAD8E8" stroke-width="2"/>
+  <text x="112" y="1430" font-family="Avenir Next, Arial, sans-serif" font-size="18" fill="#71849D">BORROW  /  HACKGLOBAL 2026</text>
+  <text x="2288" y="1430" text-anchor="end" font-family="Avenir Next, Arial, sans-serif" font-size="18" fill="#71849D">Source + independent verifier: github.com/VijayabaskarR-06/borrow</text>
+</svg>
