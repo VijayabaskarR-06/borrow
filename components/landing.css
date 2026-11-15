@@ -2104,3 +2104,177 @@ html {
     transform: none;
   }
 }
+
+/* Brief brand signature; no flashing lights or loading dependency. */
+.brand-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #15181f;
+  color: #f4f5f8;
+  display: grid;
+  place-items: center;
+  animation: intro-exit 0.55s cubic-bezier(0.76, 0, 0.24, 1) 1.45s both;
+  overflow: hidden;
+  pointer-events: auto;
+}
+.intro-registration {
+  position: absolute;
+  top: 38px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #8590a5;
+}
+.intro-identity {
+  text-align: center;
+  position: relative;
+  transform: translateY(-10px);
+}
+.intro-symbol {
+  width: 43px;
+  height: 49px;
+  color: #8b9dff;
+  margin: 0 auto 27px;
+  animation: intro-symbol 0.75s ease both;
+}
+.intro-symbol path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: intro-draw 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
+}
+.intro-name {
+  font-size: clamp(78px, 13vw, 180px);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 18px 12px;
+}
+.intro-name > span {
+  display: inline-block;
+  animation: intro-letter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.intro-name > sup {
+  font-size: 12px;
+  letter-spacing: 0;
+  align-self: flex-start;
+  margin: 12px 0 0 14px;
+  color: #8a96ad;
+  animation: intro-symbol 0.8s 0.25s both;
+}
+.intro-identity > p {
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: #8d99b0;
+  margin-top: 18px;
+  animation: intro-symbol 0.7s 0.45s both;
+}
+.intro-rule {
+  width: 160px;
+  height: 1px;
+  background: #303744;
+  margin: 35px auto 0;
+  overflow: hidden;
+}
+.intro-rule > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #8b9dff;
+  transform-origin: left;
+  animation: intro-rule 1.3s 0.1s both;
+}
+.borrow-site .intro-skip {
+  position: absolute;
+  bottom: 33px;
+  right: 5%;
+  color: #adb6c8;
+  background: transparent;
+  font-size: 11px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  pointer-events: auto;
+  padding: 12px;
+  min-height: 44px;
+}
+@keyframes intro-letter {
+  from {
+    transform: translateY(115%) rotate(5deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+}
+@keyframes intro-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes intro-symbol {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes intro-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes intro-exit {
+  to {
+    transform: translateY(-102%);
+    visibility: hidden;
+  }
+}
+@media (max-width: 760px) {
+  .intro-registration {
+    top: 27px;
+    left: 25px;
+    right: 25px;
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .intro-symbol {
+    width: 32px;
+    height: 37px;
+    margin-bottom: 23px;
+  }
+  .intro-name {
+    font-size: 24vw;
+  }
+  .intro-name > sup {
+    font-size: 8px;
+    margin: 8px 0 0 9px;
+  }
+  .intro-identity > p {
+    font-size: 9px;
+  }
+  .borrow-site .intro-skip {
+    font-size: 10px;
+    bottom: 25px;
+    right: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-intro {
+    display: none;
+  }
+}

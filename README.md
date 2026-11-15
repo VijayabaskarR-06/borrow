@@ -12,7 +12,7 @@ BORROW prepares an October expense report with temporary access to selected invo
 
 **HackGlobal release:** email-and-password accounts, isolated guest demo, real server policy enforcement, interactive Three.js visualization, encrypted persistence, and independently verifiable receipts.
 
-[System design](docs/ARCHITECTURE.md) · [Vultr deployment](docs/VULTR_DEPLOYMENT.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Submission package](docs/SUBMISSION.md) · [Live signed evidence](docs/evidence/README.md)
+[System design](docs/ARCHITECTURE.md) · [Vultr deployment](docs/VULTR_DEPLOYMENT.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Exact recording guide](docs/RECORDING_SCRIPT.md) · [Submission package](docs/SUBMISSION.md) · [Live signed evidence](docs/evidence/README.md)
 
 ## Run
 

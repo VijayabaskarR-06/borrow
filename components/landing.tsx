@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import TrustCore3D, { type SecurityState } from "./trust-core-3d";
 import DemoEntry from "./demo-entry";
+import BrandIntro from "./brand-intro";
 import "./landing.css";
 
 const repository = "https://github.com/VijayabaskarR-06/borrow";
@@ -225,6 +226,7 @@ export default function Landing() {
   }, []);
   return (
     <div className="borrow-site">
+      <BrandIntro />
       <a className="borrow-skip" href="#main">
         Skip to content
       </a>
@@ -262,9 +264,9 @@ export default function Landing() {
                 THE AI WORKSPACE WITH BOUNDARIES
               </span>
               <h1>
-                AI that works.
+                Let AI work.
                 <br />
-                Access that <em>ends.</em>
+                Keep the <em>keys.</em>
               </h1>
               <p>
                 Give AI the access to do one job.
