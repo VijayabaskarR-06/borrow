@@ -4,7 +4,9 @@
 
 **BORROW — temporary permission for autonomous work**
 
-An AI expense assistant should be able to read invoices without gaining access to payroll. BORROW translates that intention into a user-approved, signed, time-limited lease. A deterministic server gateway enforces each operation, while a live 3D Trust Core makes the boundary understandable. A signed privacy receipt lets the user check the recorded result.
+Small teams spend time reconciling invoices and payment evidence, yet giving an assistant broad access to their files is risky. BORROW imports the team's own CSV or JSON records, excludes duplicate invoices, flags missing payment evidence, and produces a report under a user-approved, signed, time-limited lease. A deterministic server gateway enforces each read; a signed receipt lets the user verify the recorded access. The 3D Trust Core makes the boundary understandable.
+
+**Real-user path:** create an account → import the user's records → select a single-currency set → approve specific fields and duration → reconcile → inspect exceptions and signed proof. The import drops unrelated columns, such as bank accounts, before storage. The default calculation runs on Vultr without an external model request. Model-assisted summarization is optional and requires explicit provider-destination approval.
 
 ## The memorable demo
 
@@ -25,7 +27,7 @@ Ask for an October expense report → review exact access → approve → watch 
 
 ## Merit
 
-The product's contribution is a clear boundary between task interpretation and task authorization. Source text cannot approve access. Useful work still finishes after an attack is contained. Explain the attack as a scripted agent choice with real policy enforcement; distinguish deterministic processing from optional model inference.
+The product's contribution is useful reconciliation on user-owned records under a clear boundary between task interpretation and task authorization. Source text cannot approve access. The sample attack demonstrates that useful work still finishes after a forbidden request is contained. Explain the attack as a scripted agent choice with real policy enforcement; distinguish deterministic calculations from optional model inference.
 
 ## Final checklist
 

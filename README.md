@@ -4,13 +4,22 @@
 
 **[Open the live BORROW application](https://borrow.139-84-216-230.sslip.io)** · Deployed on Vultr Compute in Bangalore.
 
-Use **Try the live demo** for an isolated workspace, or sign in with an email account.
+Create an account and choose **Use your records** to import invoices. The fictional sample flow remains available without an account.
 
-A private AI workspace built around one useful task and one enforceable boundary.
+A private expense reconciliation workspace built around one useful task and one enforceable boundary.
 
-BORROW prepares an October expense report with temporary access to selected invoice fields. When an invoice instructs the agent to read payroll, the server rejects the request. The report finishes, the lease closes, and a signed receipt records what happened.
+BORROW imports real invoice and payment records from CSV or JSON. You select the records, approve a short-lived lease, and receive a report that excludes duplicate invoices, avoids counting payment receipts twice, and flags missing payment evidence. The lease closes automatically and a signed receipt records every authorized read. The fictional sample flow also demonstrates a server-denied prompt injection attempt.
 
-**HackGlobal release:** email-and-password accounts, isolated guest demo, real server policy enforcement, interactive Three.js visualization, encrypted persistence, and independently verifiable receipts.
+**HackGlobal release:** real-record reconciliation, email-and-password accounts, isolated guest sample flow, server policy enforcement, interactive Three.js visualization, encrypted persistence, and independently verifiable receipts.
+
+## Use your own records
+
+1. Create an account, open **Import & select records**, and download the CSV template.
+2. Import a `.csv` or `.json` file (up to 100 KB, 24 records per file). Required fields: `vendor`, `date` (`YYYY-MM-DD`), `amount`. Optional fields: `type` (`invoice` or `receipt`), `invoiceNumber`, `currency`, `category`, `description`, `notes`.
+3. BORROW discards unknown columns before storage, including bank-account columns. Imported records are encrypted at rest. Select one currency and the records to process.
+4. Review and approve the exact fields, records, destination, and lease duration. Run the reconciliation, inspect its duplicate and payment-evidence signals, export the report, and verify the signed receipt.
+
+The default processor calculates the report on the Vultr server without model inference. If a server-side model key is configured, the same permission screen explicitly includes the provider destination before an AI summary is requested. CSV matching signals do not verify actual bank settlement.
 
 [System design](docs/ARCHITECTURE.md) · [Vultr deployment](docs/VULTR_DEPLOYMENT.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Exact recording guide](docs/RECORDING_SCRIPT.md) · [Submission package](docs/SUBMISSION.md) · [Live signed evidence](docs/evidence/README.md)
 
@@ -62,9 +71,9 @@ The attack source and the agent's decision to follow its instruction are scripte
 | Receipt | SHA-256 + ECDSA P-256 + event chain | Same; no blockchain anchoring |
 | Identity | Email/password or isolated guest | No external identity provider required |
 | Google Drive | Not implemented | Credentials alone do not enable it |
-| Uploaded documents | .txt/.json, up to 100 KB | Structured USD invoice JSON for October 2026 can enter reports |
+| Uploaded documents | CSV or JSON invoice/payment records, up to 100 KB | Any date; one currency per report; unknown columns discarded |
 
-For a JSON invoice, use fields such as `vendor`, `invoiceNumber`, `date`, `amount`, `currency`, `category` and `description`. Plain text can be privately previewed; generic OCR/PDF extraction is not implemented.
+Plain text can still be privately previewed, but only structured CSV or JSON records can enter a report. Generic OCR/PDF extraction is not implemented.
 
 ## Architecture
 

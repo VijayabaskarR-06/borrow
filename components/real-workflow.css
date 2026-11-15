@@ -1,0 +1,19 @@
+.real-import-intro{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(220px,.7fr);gap:32px;align-items:center;padding:clamp(28px,4vw,56px);margin-bottom:24px;border:1px solid #343a64;border-radius:18px;background:radial-gradient(circle at 88% 10%,#4e58a3 0,#27305a 35%,#171d37 80%);color:#f5f7ff;box-shadow:0 20px 50px #22284818;overflow:hidden}
+.real-import-intro .eyebrow{color:#aebcff;font-size:10px;letter-spacing:.16em}
+.real-import-intro h2{max-width:660px;margin:16px 0;font-size:clamp(30px,3vw,48px);line-height:1.08;letter-spacing:-.055em;font-weight:550}
+.real-import-intro p{max-width:590px;color:#b4bdd8;font-size:13px;line-height:1.75}
+.real-import-steps{display:grid;gap:14px;border-left:1px solid #ffffff2b;padding-left:28px}
+.real-import-steps span{display:flex;align-items:center;gap:13px;color:#dce3fa;font-size:12px}
+.real-import-steps b{display:grid;place-items:center;width:27px;height:27px;flex:none;border:1px solid #b5c1ff70;border-radius:50%;font-size:9px;font-weight:500;color:#bfc9ff}
+.real-upload-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-top:22px}
+.real-upload-actions .button{margin-top:0}
+.real-upload-actions .text-button{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:#6e8da3}
+.real-upload-actions .text-button:hover{color:#349ac5}
+.report-checks{margin:20px 0 8px;padding:17px;border:1px solid #dce4ef;border-radius:10px;background:#f4f7fc}
+.report-checks>strong{display:block;color:#435476;font-size:12px;font-weight:600;margin-bottom:13px}
+.report-checks>div{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.report-checks>div>span{padding:7px 10px;border-radius:999px;background:#e7edf7;color:#51617c;font-size:10px}
+.report-checks>p{color:#66768d;font-size:10px;line-height:1.6;margin:8px 0;overflow-wrap:anywhere}
+.report-checks>small{color:#8592a6;font-size:9px;line-height:1.6}
+@media(max-width:760px){.real-import-intro{grid-template-columns:1fr;padding:30px 24px;gap:25px}.real-import-intro h2{font-size:34px}.real-import-intro p{font-size:12px}.real-import-steps{grid-template-columns:1fr 1fr;border-left:0;border-top:1px solid #ffffff2b;padding:22px 0 0;gap:14px}.real-import-steps span{font-size:10px}.report-checks>div{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.real-import-steps{grid-template-columns:1fr}.report-checks>div{grid-template-columns:1fr}}

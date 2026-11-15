@@ -1,5 +1,11 @@
 # BORROW: one story, three minutes
 
+## Lead with the usable product
+
+For the strongest presentation, create an account and open **Import & select records**. Download the CSV template, then import an anonymized invoice/payment export you are authorized to use. Select the imported records, approve the exact lease, run reconciliation, show duplicate and missing-evidence checks, and verify the signed receipt. This is the real-record workflow; the calculations and policy decisions run on the live Vultr server. Only claim user feedback or business impact that you have actually collected.
+
+The fictional scenario below remains a repeatable security demonstration. Use it after the real-record path to show the prompt-injection boundary.
+
 ## Before presenting
 
 - Open the app in a browser with WebGL available. Keep reduced motion enabled if preferred; the security controls work either way.

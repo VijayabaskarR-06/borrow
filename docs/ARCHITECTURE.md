@@ -1,6 +1,6 @@
 # BORROW system design
 
-BORROW solves a concrete delegation problem: an expense-report agent needs invoice facts, but that task should not authorize reading payroll or exporting data elsewhere.
+BORROW solves a concrete delegation problem: a small team needs to reconcile its own invoices and payment evidence, but that task should not authorize reading payroll or exporting data elsewhere. Users can import structured CSV or JSON records, select the sources to process, and receive a report with duplicate and missing-evidence checks. The sample workspace remains a reproducible policy attack demonstration.
 
 ## Deployment architecture
 

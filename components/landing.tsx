@@ -262,8 +262,8 @@ export default function Landing() {
           <Link href="/login" className="nav-signin">
             Sign in
           </Link>
-          <DemoEntry className="site-button primary small">
-            Try BORROW
+          <DemoEntry className="site-button primary small" destination="/sources" requireAccount>
+            Use your records
           </DemoEntry>
         </div>
       </header>
@@ -273,21 +273,20 @@ export default function Landing() {
             <Reveal>
               <span className="section-label">
                 <span className="blue-dot" />
-                THE AI WORKSPACE WITH BOUNDARIES
+                PRIVATE EXPENSE RECONCILIATION
               </span>
               <h1>
-                Let AI work.
+                Get the report.
                 <br />
                 Keep the <em>keys.</em>
               </h1>
               <p>
-                Give AI the access to do one job.
-                <br className="desktop-break" /> Keep control of everything
-                else.
+                Import invoices and payment records. Find duplicates and missing
+                evidence. Approve only the data this one task needs.
               </p>
               <div className="hero-cta">
-                <DemoEntry className="site-button primary">
-                  Try the live demo
+                <DemoEntry className="site-button primary" destination="/sources" requireAccount>
+                  Reconcile your records
                 </DemoEntry>
                 <a className="site-button text-button" href="#how-it-works">
                   See how it works
@@ -295,7 +294,7 @@ export default function Landing() {
                 </a>
               </div>
               <span className="hero-note">
-                No account required for the demo. Your own isolated workspace.
+                Your records stay encrypted in your account. A sample flow is available without sign-in.
               </span>
             </Reveal>
           </div>
@@ -563,8 +562,8 @@ export default function Landing() {
                 Tamper-evident event chain
               </li>
             </ul>
-            <DemoEntry className="receipt-link">
-              Create your own receipt
+            <DemoEntry className="receipt-link" destination="/sources" requireAccount>
+              Create a receipt for your records
             </DemoEntry>
             <p className="receipt-scope-note">
               Blockchain can add an external timestamp to a receipt hash. This build verifies hashes and signatures locally; blockchain anchoring is not enabled.
@@ -629,12 +628,12 @@ export default function Landing() {
               <span>Keep permission in your hands.</span>
             </h2>
             <p>
-              Try the complete expense-report workflow in your own demo
-              workspace.
+              Bring your invoices and payment records. Leave with a reconciled
+              report and a signed record of exactly what was accessed.
             </p>
             <div>
-              <DemoEntry className="site-button primary">
-                Launch BORROW
+              <DemoEntry className="site-button primary" destination="/sources" requireAccount>
+                Import your records
               </DemoEntry>
               <a
                 className="site-button secondary"
