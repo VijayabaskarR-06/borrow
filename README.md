@@ -2,13 +2,17 @@
 
 ### Your AI. Your rules. Your data.
 
+**[Open the live BORROW application](https://borrow.139-84-216-230.sslip.io)** · Deployed on Vultr Compute in Bangalore.
+
+Use **Try the live demo** for an isolated workspace, or sign in with an email account.
+
 A private AI workspace built around one useful task and one enforceable boundary.
 
 BORROW prepares an October expense report with temporary access to selected invoice fields. When an invoice instructs the agent to read payroll, the server rejects the request. The report finishes, the lease closes, and a signed receipt records what happened.
 
 **HackGlobal release:** email-and-password accounts, isolated guest demo, real server policy enforcement, interactive Three.js visualization, encrypted persistence, and independently verifiable receipts.
 
-[System design](docs/ARCHITECTURE.md) · [Vultr deployment](docs/VULTR_DEPLOYMENT.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Submission package](docs/SUBMISSION.md)
+[System design](docs/ARCHITECTURE.md) · [Vultr deployment](docs/VULTR_DEPLOYMENT.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Submission package](docs/SUBMISSION.md) · [Live signed evidence](docs/evidence/README.md)
 
 ## Run
 
@@ -67,7 +71,7 @@ For a JSON invoice, use fields such as `vendor`, `invoiceNumber`, `date`, `amoun
 ```mermaid
 flowchart LR
   Browser[React + live 3D Trust Core] --> HTTPS[Caddy HTTPS]
-  subgraph Target[Vultr Compute deployment target]
+  subgraph Runtime[Vultr Compute · Bangalore]
     HTTPS --> Node[Next.js / Node 22]
     Node --> Auth[Email or guest session]
     Auth --> Gateway[Deterministic policy gateway]
@@ -77,7 +81,7 @@ flowchart LR
   Gateway -->|Approved fields only| AI[Optional model provider]
 ```
 
-Deployment is prepared for Vultr Compute. Provisioning and final public-instance validation are in progress; a pre-existing private Sites prototype does not satisfy the Vultr hosting requirement. See [deployment instructions](docs/VULTR_DEPLOYMENT.md) for the exact commands and final instance checks.
+The frontend and backend run on Vultr Compute behind Caddy HTTPS. Public workflow and account/upload checks pass, including a container-recreation test that preserves accounts, reports and signing keys. See [deployment instructions](docs/VULTR_DEPLOYMENT.md) and the [validation record](docs/VALIDATION.md).
 
 ## Verify
 

@@ -16,10 +16,11 @@ Ask for an October expense report → review exact access → approve → watch 
 |---|---|
 | Public source | https://github.com/VijayabaskarR-06/borrow |
 | Setup + system design | README.md, docs/ARCHITECTURE.md |
-| Vultr backend | Pending owner account/instance access; deploy/ contains tested build configuration |
-| Public product URL | Pending Vultr deployment; existing private Sites prototype is not the submission URL |
-| Recorded demo running on Vultr | Pending actual deployment; use docs/DEMO_SCRIPT.md |
+| Vultr backend | Running on Vultr Cloud Compute in Bangalore; Docker + Caddy HTTPS + persistent encrypted storage |
+| Public product URL | [https://borrow.139-84-216-230.sslip.io](https://borrow.139-84-216-230.sslip.io) |
+| Recorded demo running on Vultr | Public deployment verified; native recording controls timed out. Capture using docs/DEMO_SCRIPT.md |
 | User-flow screenshots | Capture login, approval, denial, report, receipt verification from the final deployment |
+| Verifiable live artifacts | docs/evidence/vultr-report.json and docs/evidence/vultr-receipt.json |
 | Reach in 3+ countries | Not yet collected; record real interviews in docs/USER_RESEARCH.md |
 
 ## Merit

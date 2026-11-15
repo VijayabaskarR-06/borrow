@@ -100,4 +100,4 @@ User-selected Drive ingestion, a mature production identity and key-management l
 
 ## Final recording evidence
 
-Vultr deployment is deferred. The final submission video must be recorded after deployment and include the public HTTPS URL plus the actual Compute instance in the console. Do not show account credentials or billing details. A local rehearsal does not satisfy that requirement.
+Vultr deployment is live at https://borrow.139-84-216-230.sslip.io. The final submission video still needs to be captured and must include that public HTTPS URL plus the actual Compute instance in the console. Do not show account credentials or billing details. A local rehearsal does not satisfy that requirement.

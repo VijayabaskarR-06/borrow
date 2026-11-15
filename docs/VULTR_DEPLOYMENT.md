@@ -1,6 +1,15 @@
 # Deploy BORROW on Vultr Compute
 
-**Status:** deployment artifacts are built for Vultr; account provisioning is authorized and being prepared. Do not claim that the public Sites prototype is hosted on Vultr.
+**Status: live and verified on 15 November 2026.**
+
+- Public application: [https://borrow.139-84-216-230.sslip.io](https://borrow.139-84-216-230.sslip.io)
+- Health: [https://borrow.139-84-216-230.sslip.io/api/health](https://borrow.139-84-216-230.sslip.io/api/health)
+- Vultr Cloud Compute: Bangalore, Ubuntu 24.04 LTS, 2 vCPU / 4 GB RAM / 80 GB SSD. Automatic backups enabled.
+- HTTPS terminates at Caddy. Node listens on loopback port 3000 and runs as UID 1001.
+- Encrypted records and signing keys persist in the Docker data volume. Production environment permissions are 0600.
+- App image built from release `aef873605838cc0406433fd09b0258e185e91d88`.
+
+Both public HTTP suites pass. After app-container recreation, the same account can sign in and retrieve the original report and independently verifiable receipt. The older Sites prototype is separate from this deployment.
 
 ## Required account inputs
 
@@ -53,7 +62,7 @@ Caddy requests an HTTPS certificate automatically. The application container run
 3. Complete expense report, payroll denial, signature verification and tamper test.
 4. Approve a second task, revoke its lease, and test invoice access; expect `LEASE_REVOKED`.
 5. Create a disposable email account, sign out, sign back in, and confirm history survives.
-6. Restart the app container and confirm persisted account/task data remains.
+6. Run `node scripts/persistence-check.mjs https://$APP_DOMAIN`. At its checkpoint, recreate only the app container, wait for HTTPS health, then press Enter. It checks the original session, account sign-in, report and receipt under the original public key.
 7. Run `node scripts/smoke.mjs https://$APP_DOMAIN` from your local machine. It creates only isolated guest test workspaces.
 8. Run `node scripts/release-check.mjs https://$APP_DOMAIN` for production cookie flags, account lifecycle, uploads, independent receipt verification and cross-workspace document isolation.
 9. Record the final walkthrough with the public URL and Vultr console/instance visible. Do not show API keys, SSH keys or billing details.

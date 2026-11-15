@@ -4,12 +4,12 @@ BORROW solves a concrete delegation problem: an expense-report agent needs invoi
 
 ## Deployment architecture
 
-The following is the **prepared Vultr deployment design**. Vultr provisioning is deferred; it is not a claim that the instance is already running.
+The following is the **live Vultr deployment**, verified on 15 November 2026. The public application is [https://borrow.139-84-216-230.sslip.io](https://borrow.139-84-216-230.sslip.io).
 
 ```mermaid
 flowchart LR
   U[Browser: React + Three.js] -->|HTTPS| C[Caddy: TLS + proxy]
-  subgraph V[Vultr Compute instance — deployment target]
+  subgraph V[Vultr Compute instance · Bangalore]
     C --> N[Next.js App Router / Node 22]
     N --> A[Email/password or isolated guest session]
     A --> P[Deterministic policy gateway]

@@ -1,0 +1,50 @@
+{
+  "title": "October business expense report",
+  "period": "October 2026",
+  "currency": "USD",
+  "total": 3784.5,
+  "items": [
+    {
+      "documentId": "invoice-001",
+      "vendor": "Orbit Studio",
+      "date": "2026-10-04",
+      "category": "Design services",
+      "description": "Product illustration and brand production",
+      "amount": 1840,
+      "currency": "USD"
+    },
+    {
+      "documentId": "invoice-002",
+      "vendor": "Northstar Cloud",
+      "date": "2026-10-12",
+      "category": "Software & infrastructure",
+      "description": "Cloud hosting, compute and team licenses",
+      "amount": 1260,
+      "currency": "USD"
+    },
+    {
+      "documentId": "invoice-003",
+      "vendor": "Meridian Travel",
+      "date": "2026-10-23",
+      "category": "Business travel",
+      "description": "Client workshop rail travel and accommodation",
+      "amount": 684.5,
+      "currency": "USD"
+    }
+  ],
+  "summary": "October expenses total $3,784.50 across 3 invoices. Payment confirmations are supporting evidence and are not double-counted. Bank details, payroll and private contracts were excluded from the report.",
+  "citations": [
+    "invoice-001",
+    "invoice-002",
+    "invoice-003",
+    "receipt-001"
+  ],
+  "redactedFields": [
+    "bankAccount",
+    "contactEmail",
+    "employee salaries",
+    "contract terms"
+  ],
+  "mode": "demo",
+  "generatedAt": "2026-11-15T02:19:47.728Z"
+}
