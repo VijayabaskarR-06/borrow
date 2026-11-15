@@ -9,7 +9,7 @@
 - Encrypted records and signing keys persist in the Docker data volume. Production environment permissions are 0600.
 - App image built from release `aef873605838cc0406433fd09b0258e185e91d88`.
 
-Both public HTTP suites pass. After app-container recreation, the same account can sign in and retrieve the original report and independently verifiable receipt. The older Sites prototype is separate from this deployment.
+Both public HTTP suites pass. After app-container recreation, the same account can sign in and retrieve the original report and independently verifiable receipt.
 
 ## Required account inputs
 
