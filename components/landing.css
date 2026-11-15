@@ -2110,8 +2110,8 @@ html {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: #15181f;
-  color: #f4f5f8;
+  background: #fff;
+  color: #202631;
   display: grid;
   place-items: center;
   animation: intro-exit 0.55s cubic-bezier(0.76, 0, 0.24, 1) 1.45s both;
@@ -2137,7 +2137,7 @@ html {
 .intro-symbol {
   width: 43px;
   height: 49px;
-  color: #8b9dff;
+  color: #4c6aff;
   margin: 0 auto 27px;
   animation: intro-symbol 0.75s ease both;
 }
@@ -2172,14 +2172,14 @@ html {
 .intro-identity > p {
   font-size: 11px;
   letter-spacing: 0.3px;
-  color: #8d99b0;
+  color: #697386;
   margin-top: 18px;
   animation: intro-symbol 0.7s 0.45s both;
 }
 .intro-rule {
   width: 160px;
   height: 1px;
-  background: #303744;
+  background: #e0e5f0;
   margin: 35px auto 0;
   overflow: hidden;
 }
@@ -2187,7 +2187,7 @@ html {
   display: block;
   width: 100%;
   height: 100%;
-  background: #8b9dff;
+  background: #4c6aff;
   transform-origin: left;
   animation: intro-rule 1.3s 0.1s both;
 }
@@ -2195,7 +2195,7 @@ html {
   position: absolute;
   bottom: 33px;
   right: 5%;
-  color: #adb6c8;
+  color: #697386;
   background: transparent;
   font-size: 11px;
   display: flex;

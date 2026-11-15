@@ -57,7 +57,7 @@
 **Click:** **Verify integrity**, then **Tamper test**, then **Verify integrity** again. End this section with a valid original. Click **Download signed receipt**.
 
 **Say:**
-> “The privacy receipt includes a content hash, an ECDSA signature and a linked event chain. The original verifies. Alter its contents and verification fails. The original still verifies afterward. You can download it and check it offline. This is cryptographic integrity, not a claim of blockchain anchoring or invoice truth.”
+> “The privacy receipt includes a content hash, an ECDSA signature and a linked event chain. The original verifies. Alter its contents and verification fails. The original still verifies afterward. You can download it and check it offline. Blockchain could provide an external timestamp for this hash. On-chain anchoring is not enabled here; this demo verifies the signed record locally, not invoice truth.”
 
 ### 2:25–2:55 — Revocation
 

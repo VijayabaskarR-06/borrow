@@ -13,7 +13,7 @@ const money=(n:number,c='USD')=>new Intl.NumberFormat('en-US',{style:'currency',
 const time=(s:string)=>new Date(s).toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
 const short=(s:string)=>s.slice(0,8);
 const stateText:Record<string,string>={IDLE:'Awaiting your permission',TASK_REQUESTED:'Your rules come first',LEASE_APPROVED:'A narrow door is open',AGENT_EXECUTING:'Working within your limits',ACCESS_DENIED:'The boundary held.',TASK_COMPLETED:'Task complete. Access closed.',RECEIPT_VERIFIED:'Trust, with the proof.'};
-function Logo(){return <Link href="/" className="brand" aria-label="BORROW home"><svg width="21" height="28" viewBox="0 0 28 36" fill="none" aria-hidden="true"><path d="M2 2h14l10 8-10 8 10 8-10 8H2V2Zm0 0 24 24M2 18h14M2 34 26 10" stroke="#52d9ff" strokeWidth="1.7"/></svg>BORROW<span className="brand-dot">.</span></Link>}
+function Logo(){return <Link href="/" className="brand" aria-label="BORROW home"><svg width="21" height="28" viewBox="0 0 28 36" fill="none" aria-hidden="true"><path d="M2 2h14l10 8-10 8 10 8-10 8H2V2Zm0 0 24 24M2 18h14M2 34 26 10" stroke="#52d9ff" strokeWidth="1.7"/></svg>Borrow<span className="brand-dot">.</span></Link>}
 function Badge({children,tone='muted'}:{children:React.ReactNode;tone?:string}){return <span className={`badge badge-${tone}`}><i/>{children}</span>}
 function download(name:string,data:string,type='application/json'){const u=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
 

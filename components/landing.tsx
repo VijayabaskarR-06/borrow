@@ -77,7 +77,7 @@ function Brand() {
           strokeWidth="1.8"
         />
       </svg>
-      borrow<span>®</span>
+      Borrow<span>®</span>
     </span>
   );
 }
@@ -511,7 +511,7 @@ export default function Landing() {
         </section>
         <section className="receipt-section" id="proof">
           <Reveal className="receipt-copy">
-            <span className="section-label">03 / EVIDENCE YOU CAN KEEP</span>
+            <span className="section-label">03 / VERIFIABLE PROOF · BLOCKCHAIN EXPLAINED</span>
             <h2>
               A finished report.
               <br />A closed permission.
@@ -541,7 +541,7 @@ export default function Landing() {
               Create your own receipt
             </DemoEntry>
             <p className="receipt-scope-note">
-              Local cryptographic proof. Blockchain anchoring is not enabled.
+              Blockchain can add an external timestamp to a receipt hash. This build verifies hashes and signatures locally; blockchain anchoring is not enabled.
             </p>
           </Reveal>
           <Reveal className="receipt-example">

@@ -24,3 +24,5 @@
 @media(max-width:620px){.editorial-site .exhibit-top,.editorial-site .exhibit-bottom{font-size:7px;letter-spacing:.6px}.editorial-site .exhibit-permissions>div{font-size:10px}.editorial-site .exhibit-copy>p{font-size:11px}.editorial-site .exhibit-core{top:310px}}
 /* Shared graphite, white and electric-blue identity. */
 .workspace-shell{--cyan:#4c6aff;--bg:#f4f5f7;--text:#252c39;--muted:#7b879c;background:#f4f5f7}.workspace-shell .button-primary{background:#4c6aff;border-color:#4c6aff;color:#fff}.workspace-shell .button-primary:hover{background:#627cff}.workspace-shell .brand svg path{stroke:#4c6aff}.workspace-shell .nav-link.active{background:#e7ebfa;color:#4c6aff;box-shadow:inset 2px 0 #4c6aff}.workspace-shell .core-panel{background:#15181f}.workspace-shell .core-metrics{background:#10141a}.workspace-shell .prompt-box:focus-within{border-color:#8c9dff}.workspace-shell a:focus-visible,.workspace-shell button:focus-visible,.workspace-shell input:focus-visible,.workspace-shell textarea:focus-visible{outline-color:#4c6aff}
+
+.workspace-shell .brand{text-transform:none}

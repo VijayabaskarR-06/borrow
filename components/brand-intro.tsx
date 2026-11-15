@@ -32,7 +32,7 @@ export default function BrandIntro() {
   return (
     <div className="brand-intro" aria-label="BORROW introduction">
       <div className="intro-registration" aria-hidden="true">
-        <span>BORROW / 001</span>
+        <span>Borrow / 001</span>
         <span>ACCESS, ON YOUR TERMS.</span>
       </div>
       <div className="intro-identity" aria-hidden="true">
@@ -45,7 +45,7 @@ export default function BrandIntro() {
           />
         </svg>
         <div className="intro-name">
-          {"borrow".split("").map((letter, index) => (
+          {"Borrow".split("").map((letter, index) => (
             <span
               key={index}
               style={{ animationDelay: `${index * 55 + 100}ms` }}
