@@ -1,6 +1,9 @@
 @font-face{font-family:'Bricolage Grotesque';src:url('/fonts/bricolage-grotesque-700.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Bricolage Grotesque';src:url('/fonts/bricolage-grotesque-500.ttf') format('truetype');font-weight:500;font-display:swap}
 @font-face{font-family:'Geist';src:url('/fonts/geist-400.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Geist';src:url('/fonts/geist-700.ttf') format('truetype');font-weight:700;font-display:swap}
 @font-face{font-family:'Geist Mono';src:url('/fonts/geist-mono-400.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Geist Mono';src:url('/fonts/geist-mono-500.ttf') format('truetype');font-weight:500;font-display:swap}
 
 /* Reference-led visual system: porcelain, leaf green, ink and electric blue. */
 .borrow-site{--ink:#10201b;--muted:#506059;--line:#cbd4bd;--blue:#2457f5;background:#eaf0e3;color:var(--ink);font-family:'Geist',Arial,sans-serif;background-image:radial-gradient(55% 36% at 10% 0%,#cfe3c6 0%,transparent 72%),radial-gradient(44% 38% at 97% 7%,#d6e6da 0%,transparent 72%),radial-gradient(60% 42% at 70% 70%,#dcebd9 0%,transparent 78%)}
@@ -88,3 +91,22 @@
 @media(max-width:760px){.site-nav{height:66px;padding-inline:20px}.scene-rail{display:none}.site-hero{padding:64px 22px 0}.hero-editorial h1{font-size:clamp(49px,10.8vw,72px)}.hero-editorial p{font-size:16px}.hero-cta{margin-top:29px}.hero-prompt{min-height:65px;padding:7px 8px 7px 12px;gap:9px}.hero-prompt-symbol{width:34px;height:34px}.hero-prompt-copy{font-size:12px;line-height:1.2}.hero-prompt-action{min-height:46px;padding:0 13px;font-size:0;gap:0}.hero-prompt-action svg{width:18px;height:18px}.hero-secondary{flex-direction:column;gap:7px;margin-top:17px}.hero-product{margin-top:45px}.hero-baseline{margin-top:42px}.principle-strip{background:#e1ebd8}.scroll-interlude{margin:8px;border-radius:24px;height:120svh}.interlude-sticky{min-height:0;padding:90px 26px}.interlude-statement strong{font-size:clamp(58px,13vw,88px)}.story-section{padding:95px 23px 75px}.story-layout{display:block;margin-top:55px}.story-sticky{position:static}.story-chapters article,.story-chapters article:last-child{min-height:0;padding:55px 0;opacity:1;transform:none}.story-chapters h3{font-size:38px}.story-chapters article>div{padding-left:24px}.enforcement-section{padding:100px 23px}.receipt-section{padding:100px 23px}.receipt-paper{transform:none}.closing-section{padding:110px 23px}}
 @media(max-width:420px){.hero-editorial h1{font-size:11.7vw}.hero-prompt-copy{font-size:11px}.interlude-statement strong{font-size:13vw}.story-chapters h3{font-size:34px}}
 @media(prefers-reduced-motion:reduce){.story-chapters article{opacity:1;transform:none}.hero-product{transform:none!important}}
+
+/* A restrained type scale keeps the experience readable while scenes move. */
+.borrow-site{letter-spacing:-.012em}
+.borrow-site h2{font-weight:500;line-height:1.12;letter-spacing:-.048em}
+.borrow-site .section-label,.borrow-site .chapter-index,.borrow-site .interlude-kicker,.borrow-site .interlude-scroll{font-weight:500;letter-spacing:.095em;line-height:1.5}
+.hero-editorial h1{font-weight:700;line-height:1.015;letter-spacing:-.058em}
+.hero-editorial p{line-height:1.6;letter-spacing:-.015em}
+.hero-prompt-copy{font-weight:400;letter-spacing:-.012em}
+.hero-prompt-action,.site-button,.site-nav>nav,.nav-signin{font-family:'Geist',Arial,sans-serif;font-weight:700;letter-spacing:-.015em}
+.hero-secondary{font-size:12px;line-height:1.5}
+.hero-baseline>strong{font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:500;letter-spacing:-.025em}
+.interlude-statement>span{font-weight:500;line-height:1.16;letter-spacing:-.045em}
+.interlude-statement strong{font-weight:700;line-height:1.01;letter-spacing:-.065em}
+.interlude-statement p{line-height:1.65}
+.story-introduction>p,.story-chapters article p,.enforcement-intro p,.receipt-copy>p{line-height:1.75;letter-spacing:-.01em}
+.story-chapters h3{font-weight:500;line-height:1.12;letter-spacing:-.045em}
+.chapter-detail{line-height:1.6}
+.receipt-copy h2,.closing-section h2{font-weight:500}
+@media(max-width:760px){.hero-editorial h1{line-height:1.03}.hero-editorial p{line-height:1.65}.story-chapters h3{line-height:1.15}.hero-secondary{font-size:11px}}
